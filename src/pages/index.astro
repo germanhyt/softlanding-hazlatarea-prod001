@@ -1,11 +1,53 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// React Section Components (Islands)
+import HeroSection from "../components/sections/HeroSection";
+import FamiliarSection from "../components/sections/FamiliarSection";
+import MetodologiaSection from "../components/sections/MetodologiaSection";
+import ServiciosSection from "../components/sections/ServiciosSection";
+import FounderSection from "../components/sections/FounderSection";
+import ParaEmprendedoresSection from "../components/sections/ParaEmprendedoresSection";
+import CostoRealSection from "../components/sections/CostoRealSection";
+import ContactSection from "../components/sections/ContactSection";
+import SocialNetworks from "../components/SocialNetworks";
+
+import { pageSEO } from "../config/seoConfig";
 ---
 
-<Layout>
-	<Welcome />
+<Layout title={pageSEO.home.title} description={pageSEO.home.description}>
+	<Header />
+
+	<main id="main-content">
+		<!-- Hero Section -->
+		<HeroSection client:load />
+
+		<!-- Si esto te suena familiar Section -->
+		<FamiliarSection client:visible />
+
+		<!-- Metodología Section - Carousel especial -->
+		<MetodologiaSection client:visible />
+
+		<!-- Servicios Section - Carousel edge-to-edge -->
+		<ServiciosSection client:visible />
+
+		<!-- Costo Real Section -->
+		<CostoRealSection client:visible />
+
+		<!-- Para Emprendedores Section -->
+		<ParaEmprendedoresSection client:visible />
+
+		<!-- Founder Section -->
+		<FounderSection client:visible />
+
+		<!-- Contact Section -->
+		<ContactSection client:visible />
+
+		<!-- Social Networks (WhatsApp) -->
+		<SocialNetworks client:load />
+	</main>
+
+	<Footer />
 </Layout>

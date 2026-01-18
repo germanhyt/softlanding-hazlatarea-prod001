@@ -1,0 +1,16 @@
+# Robots.txt for Haz La Tarea
+# https://www.hazlatarea.pe
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.hazlatarea.pe/sitemap-index.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Disallow admin and private paths
+Disallow: /api/
+Disallow: /_astro/
+Disallow: /admin/
