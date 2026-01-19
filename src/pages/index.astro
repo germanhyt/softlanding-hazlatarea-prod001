@@ -1,24 +1,25 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
-// React Section Components (Islands)
+// React Sections
 import HeroSection from "../components/sections/HeroSection";
 import FamiliarSection from "../components/sections/FamiliarSection";
-import MetodologiaSection from "../components/sections/MetodologiaSection";
-import ServiciosSection from "../components/sections/ServiciosSection";
-import FounderSection from "../components/sections/FounderSection";
-import ParaEmprendedoresSection from "../components/sections/ParaEmprendedoresSection";
 import CostoRealSection from "../components/sections/CostoRealSection";
-import ContactSection from "../components/sections/ContactSection";
+import MetdologiasAndServicios from "../components/sections/MetdologiasAndServicios";
+import ParaEmprendedoresSection from "../components/sections/ParaEmprendedoresSection";
+import PhraseSection from "../components/sections/PhraseSection";
+import FounderSection from "../components/sections/FounderSection";
+import TestimonialsSection from "../components/sections/TestimonialsSection";
+import FAQSection from "../components/sections/FAQSection";
 import SocialNetworks from "../components/SocialNetworks";
 
 import { pageSEO } from "../config/seoConfig";
 ---
 
 <Layout title={pageSEO.home.title} description={pageSEO.home.description}>
-	<Header />
+	<Header client:load />
 
 	<main id="main-content">
 		<!-- Hero Section -->
@@ -27,27 +28,36 @@ import { pageSEO } from "../config/seoConfig";
 		<!-- Si esto te suena familiar Section -->
 		<FamiliarSection client:visible />
 
-		<!-- Metodología Section - Carousel especial -->
-		<MetodologiaSection client:visible />
-
-		<!-- Servicios Section - Carousel edge-to-edge -->
-		<ServiciosSection client:visible />
-
 		<!-- Costo Real Section -->
 		<CostoRealSection client:visible />
+
+		<!-- Metodología Section - Carousel especial -->
+		<!-- <MetodologiaSection client:visible /> -->
+
+		<!-- Servicios Section - Carousel edge-to-edge -->
+		<!-- <ServiciosSection client:visible /> -->
+
+		<!-- Casos de éxito Section -->
+		<MetdologiasAndServicios client:visible />
 
 		<!-- Para Emprendedores Section -->
 		<ParaEmprendedoresSection client:visible />
 
+		<!-- Phrase Section -->
+		<PhraseSection client:visible />
+
 		<!-- Founder Section -->
 		<FounderSection client:visible />
 
-		<!-- Contact Section -->
-		<ContactSection client:visible />
+		<!-- Testimonials Section -->
+		<TestimonialsSection client:visible />
+
+		<!-- FAQ Section -->
+		<FAQSection client:visible />
 
 		<!-- Social Networks (WhatsApp) -->
 		<SocialNetworks client:load />
 	</main>
 
-	<Footer />
+	<Footer client:load />
 </Layout>
