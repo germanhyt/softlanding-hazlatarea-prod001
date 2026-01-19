@@ -34,7 +34,7 @@ export default function FamiliarSection() {
         {
             text: "Dejas la planificación para después",
             position: "top-[55%] right-[0%]",
-            mobilePosition: "top-[70%] right-[0%]"
+            mobilePosition: "top-[50%] right-[0%]"
         },
         {
             text: "Postergas decisiones por falta de claridad",
@@ -95,11 +95,11 @@ export default function FamiliarSection() {
         <section
             id="familiar"
             ref={sectionRef}
-            className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-white py-20"
+            className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#F9F7F2] py-20 px-4"
         >
-            {/* Corner Images */}
+            {/* Corner Images - Purple Waves */}
             <motion.div
-                className="absolute left-0 top-0 h-full w-auto z-0 pointer-events-none"
+                className="absolute -left-10 lg:left-0 top-0 h-[35%] sm:h-[40%] lg:h-[60%] 3xl:h-[90%] w-auto z-0 pointer-events-none"
                 initial="hidden"
                 animate={isInView ? "visible" : "hidden"}
                 variants={cornerLeftVariants}
@@ -112,7 +112,7 @@ export default function FamiliarSection() {
             </motion.div>
 
             <motion.div
-                className="absolute right-0 top-0 h-full w-auto z-0 pointer-events-none"
+                className="absolute -right-10 lg:right-0 top-0 h-[35%] sm:h-[40%] lg:h-[60%] 3xl:h-[90%] w-auto z-0 pointer-events-none"
                 initial="hidden"
                 animate={isInView ? "visible" : "hidden"}
                 variants={cornerRightVariants}
@@ -124,10 +124,10 @@ export default function FamiliarSection() {
                 />
             </motion.div>
 
-            <div className="container-custom relative z-10 w-full h-full flex flex-col items-center">
+            <div className="container-custom relative z-10 w-full flex flex-col items-center">
                 {/* Title */}
                 <motion.h2
-                    className="font-impact text-4xl sm:text-5xl md:text-6xl text-[#333] text-center uppercase tracking-tight mb-16 max-w-4xl"
+                    className="font-impact text-[2rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[4rem] text-[#202020] text-center uppercase tracking-tight mb-20 max-w-4xl leading-[1.1]"
                     initial="hidden"
                     animate={isInView ? "visible" : "hidden"}
                     variants={titleVariants}
@@ -135,12 +135,12 @@ export default function FamiliarSection() {
                     Si esto te suena familiar, <br className="hidden md:block" /> no estás solo/a
                 </motion.h2>
 
-                {/* Central Illustration Content Area */}
-                <div className="relative w-full max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-center min-h-[400px]">
+                {/* Central Illustration Area */}
+                <div className="relative w-full max-w-3xl aspect-square md:aspect-video flex items-center justify-center">
 
                     {/* The Girl Illustration */}
                     <motion.div
-                        className="relative z-10 w-48 md:w-64 lg:w-80"
+                        className="relative z-10 w-64 sm:w-72 md:w-80 lg:w-96 mt-12 md:mt-20"
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={isInView ? { opacity: 1, scale: 1 } : {}}
                         transition={{ duration: 0.6, delay: 0.2 }}
@@ -153,46 +153,25 @@ export default function FamiliarSection() {
                         />
                     </motion.div>
 
-                    {/* Idea Clouds / Bubbles */}
-                    <motion.div
-                        className="absolute inset-0 z-20 pointer-events-none"
-                        initial="hidden"
-                        animate={isInView ? "visible" : "hidden"}
-                        variants={containerVariants}
-                    >
-                        {painPoints.map((point, index) => (
-                            <motion.div
-                                key={index}
-                                className={`absolute hidden md:block ${point.position} max-w-[200px]`}
-                                variants={bubbleVariants}
-                            >
-                                <div className="bg-[#f0b033] text-white text-xs md:text-sm font-semibold px-5 py-4 rounded-[2rem] shadow-xl relative transform transition-transform hover:scale-105 pointer-events-auto">
-                                    "{point.text}"
-                                    {/* Tail */}
-                                    <div className="absolute top-[90%] left-[20%] w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[15px] border-t-[#f0b033]" />
-                                </div>
-                            </motion.div>
-                        ))}
-                    </motion.div>
-
-                    {/* Mobile Bubbles Layout (Stacked below image) */}
-                    <div className="md:hidden flex flex-wrap justify-center gap-4 mt-8 px-4">
-                        {painPoints.map((point, index) => (
-                            <motion.div
-                                key={`mobile-${index}`}
-                                className="max-w-[180px]"
-                                variants={bubbleVariants}
-                                initial="hidden"
-                                animate={isInView ? "visible" : "hidden"}
-                                transition={{ delay: 0.5 + (index * 0.1) }}
-                            >
-                                <div className="bg-[#f0b033] text-white text-[10px] leading-tight font-semibold px-4 py-3 rounded-[1.5rem] shadow-lg relative">
-                                    "{point.text}"
-                                    <div className="absolute top-[90%] left-[20%] w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[10px] border-t-[#f0b033]" />
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
+                    {/* Idea Clouds / Bubbles - Responsive Positions */}
+                    {painPoints.map((point, index) => (
+                        <motion.div
+                            key={index}
+                            className={`absolute z-20 ${point.mobilePosition} ${point.position} w-[140px] sm:w-[160px] md:w-[180px] lg:w-[220px] pointer-events-none`}
+                            variants={bubbleVariants}
+                            initial="hidden"
+                            animate={isInView ? "visible" : "hidden"}
+                            transition={{ delay: 0.5 + (index * 0.1) }}
+                        >
+                            <div className="bg-[#FFB84D] text-black text-[10px] sm:text-xs md:text-sm font-bold px-4 py-3 md:px-5 md:py-4 rounded-[1.5rem] md:rounded-[1.5rem] shadow-xl relative pointer-events-auto transform transition-transform hover:scale-105">
+                                "{point.text}"
+                                {/* Tail */}
+                                <div className={`absolute w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[12px] border-t-[#FFB84D]
+                                    ${index % 2 === 0 ? 'left-[20%]' : 'right-[20%]'} top-[90%]`}
+                                />
+                            </div>
+                        </motion.div>
+                    ))}
                 </div>
             </div>
         </section>

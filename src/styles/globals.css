@@ -303,6 +303,25 @@
     }
 }
 
+/* Swiper for Costo Real - Stacked Cards */
+.costo-real-swiper {
+    @apply overflow-visible !important;
+    padding: 20px 0 40px 0 !important;
+}
+
+.costo-real-swiper .swiper-pagination {
+    bottom: 0px !important;
+}
+
+.costo-real-swiper .swiper-pagination-bullet {
+    background: rgba(0, 0, 0, 0.3) !important;
+    opacity: 1 !important;
+}
+
+.costo-real-swiper .swiper-pagination-bullet-active {
+    background: white !important;
+}
+
 /* ===================================
    ANIMATIONS
    =================================== */

@@ -24,6 +24,21 @@ export default function Header() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    // Bloquear scroll cuando el menú está abierto
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = 'hidden';
+            document.body.style.touchAction = 'none'; // Extra safety for mobile
+        } else {
+            document.body.style.overflow = 'unset';
+            document.body.style.touchAction = 'auto';
+        }
+        return () => {
+            document.body.style.overflow = 'unset';
+            document.body.style.touchAction = 'auto';
+        };
+    }, [isMobileMenuOpen]);
+
     const menuVariants: Variants = {
         closed: { opacity: 0, y: -20 },
         open: {
@@ -38,96 +53,91 @@ export default function Header() {
         open: { opacity: 1, y: 0 }
     };
 
+
     return (
-        <header
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-                ? 'py-2  bg-black/50 backdrop-blur-md shadow-lg'
-                : 'py-4 md:py-6 bg-transparent'
-                }`}
-        >
-            <nav className="container-custom">
-                <div className="flex items-center justify-between">
-                    {/* Logo */}
-                    <a
-                        href="/"
-                        className="flex items-center gap-3 group relative z-10"
-                    >
-                        <img
-                            src="/images/logo.png"
-                            alt="Haz La Tarea"
-                            className="h-[4rem] md:h-[6rem] w-auto transition-transform duration-300 group-hover:scale-105"
-                        />
-                    </a>
-
-                    {/* Desktop Navigation - Pill style + Hamburger */}
-                    <div className="hidden lg:flex items-center gap-4">
-                        <div className={`flex items-center gap-1 px-2 py-2 rounded-full transition-all duration-300 ${isScrolled
-                            ? 'bg-white/95 shadow-lg shadow-black/10 backdrop-blur-sm'
-                            : 'bg-white/90 backdrop-blur-sm'
-                            }`}>
-                            {navigation.map((item) => (
-                                <a
-                                    key={item.name}
-                                    href={item.href}
-                                    className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-primary 
-                                               transition-colors duration-200 whitespace-nowrap
-                                               border-b-2 border-transparent hover:border-primary/50"
-                                >
-                                    {item.name}
-                                </a>
-                            ))}
-                        </div>
-
-                        {/* Hamburger icon next to pill in desktop */}
-                        {/* <button
-                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                            className="p-2 text-white/80 hover:text-white transition-colors"
+        <>
+            <header
+                className={`fixed top-0 left-0 right-0 transition-all duration-300 ${isMobileMenuOpen ? 'z-[120]' : 'z-[100]'} ${isScrolled
+                    ? 'py-2 bg-black/60 backdrop-blur-md shadow-lg shadow-black/20'
+                    : 'py-4 md:py-6 bg-transparent'
+                    }`}
+            >
+                <nav className="container-custom">
+                    <div className="flex items-center justify-between">
+                        {/* Logo */}
+                        <a
+                            href="/"
+                            className="flex items-center gap-3 group relative pointer-events-auto"
                         >
-                            <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
-                            </svg>
-                        </button> */}
-                    </div>
+                            <img
+                                src="/images/logo.png"
+                                alt="Haz La Tarea"
+                                className="h-14 md:h-18 lg:h-20 w-auto transition-transform duration-300 group-hover:scale-105"
+                            />
+                        </a>
 
-                    {/* Mobile Menu Button */}
-                    <button
-                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                        className="lg:hidden relative z-10 p-2 rounded-lg hover:bg-white/10 transition-colors"
-                        aria-label={isMobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
-                    >
-                        <div className="w-6 h-5 flex flex-col justify-between">
-                            <motion.span
-                                className="w-full h-0.5 bg-white rounded-full origin-left"
-                                animate={isMobileMenuOpen ? { rotate: 45, y: 0 } : { rotate: 0, y: 0 }}
-                                transition={{ duration: 0.3 }}
-                            />
-                            <motion.span
-                                className="w-full h-0.5 bg-white rounded-full"
-                                animate={isMobileMenuOpen ? { opacity: 0, scale: 0 } : { opacity: 1, scale: 1 }}
-                                transition={{ duration: 0.3 }}
-                            />
-                            <motion.span
-                                className="w-full h-0.5 bg-white rounded-full origin-left"
-                                animate={isMobileMenuOpen ? { rotate: -45, y: 0 } : { rotate: 0, y: 0 }}
-                                transition={{ duration: 0.3 }}
-                            />
+                        {/* Desktop Navigation - Pill style */}
+                        <div className="hidden lg:flex items-center gap-4">
+                            <div className={`flex items-center gap-1 px-2 py-1.5 rounded-full transition-all duration-300 ${isScrolled
+                                ? 'bg-white/10 shadow-lg backdrop-blur-md border border-white/20'
+                                : 'bg-white shadow-xl'
+                                }`}>
+                                {navigation.map((item) => (
+                                    <a
+                                        key={item.name}
+                                        href={item.href}
+                                        className={`px-5 py-2 text-sm font-bold uppercase transition-all duration-300 rounded-full
+                                               ${isScrolled
+                                                ? 'text-white hover:bg-white hover:text-black'
+                                                : 'text-black hover:bg-black/80 hover:text-white'
+                                            }`}
+                                    >
+                                        {item.name}
+                                    </a>
+                                ))}
+                            </div>
                         </div>
-                    </button>
-                </div>
-            </nav>
 
-            {/* Mobile Menu Overlay */}
+                        {/* Mobile Menu Button */}
+                        <button
+                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                            className="lg:hidden relative p-2 rounded-lg transition-all duration-300"
+                            aria-label={isMobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
+                        >
+                            <div className="w-6 h-5 relative flex items-center justify-center">
+                                <motion.span
+                                    className="w-full h-0.5 bg-white rounded-full absolute"
+                                    animate={isMobileMenuOpen ? { rotate: 45, y: 0 } : { rotate: 0, y: -7 }}
+                                    transition={{ duration: 0.2 }}
+                                />
+                                <motion.span
+                                    className="w-full h-0.5 bg-white rounded-full absolute"
+                                    animate={isMobileMenuOpen ? { opacity: 0, x: -10 } : { opacity: 1, x: 0 }}
+                                    transition={{ duration: 0.2 }}
+                                />
+                                <motion.span
+                                    className="w-full h-0.5 bg-white rounded-full absolute"
+                                    animate={isMobileMenuOpen ? { rotate: -45, y: 0 } : { rotate: 0, y: 7 }}
+                                    transition={{ duration: 0.2 }}
+                                />
+                            </div>
+                        </button>
+                    </div>
+                </nav>
+            </header>
+
+            {/* Mobile Menu Overlay - Outside header to avoid transition issues */}
             <AnimatePresence>
                 {isMobileMenuOpen && (
                     <motion.div
-                        className="lg:hidden fixed inset-0 bg-background/98 backdrop-blur-xl z-40 pt-24"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3 }}
+                        className="lg:hidden fixed inset-0 bg-black/80 backdrop-blur-xl z-[110] flex flex-col pt-32 touch-none px-6"
+                        initial={{ opacity: 0, x: '100%' }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: '100%' }}
+                        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                     >
                         <motion.div
-                            className="container-custom h-full flex flex-col"
+                            className="container-custom flex-1 flex flex-col"
                             variants={menuVariants}
                             initial="closed"
                             animate="open"
@@ -138,8 +148,8 @@ export default function Header() {
                                     <motion.a
                                         key={item.name}
                                         href={item.href}
-                                        className="text-3xl md:text-4xl font-impact uppercase text-white 
-                                                   hover:text-primary transition-colors duration-300"
+                                        className="text-4xl sm:text-5xl font-impact uppercase text-white 
+                                                   hover:text-[#13F66F] transition-colors duration-300"
                                         variants={itemVariants}
                                         onClick={() => setIsMobileMenuOpen(false)}
                                     >
@@ -150,12 +160,12 @@ export default function Header() {
 
                             {/* Mobile Menu Footer */}
                             <motion.div
-                                className="py-8 border-t border-white/10"
+                                className="py-12 border-t border-white/10"
                                 variants={itemVariants}
                             >
                                 <a
                                     href="#contacto"
-                                    className="btn-primary w-full justify-center text-lg"
+                                    className="btn-primary w-full justify-center text-xl py-6 rounded-2xl"
                                     onClick={() => setIsMobileMenuOpen(false)}
                                 >
                                     Conversemos
@@ -165,6 +175,6 @@ export default function Header() {
                     </motion.div>
                 )}
             </AnimatePresence>
-        </header>
+        </>
     );
 }

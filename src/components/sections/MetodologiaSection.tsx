@@ -32,7 +32,7 @@ export default function MetodologiaSection() {
             id: 1,
             image: "/images/section_metodologia_1.webp",
             title: "TRAZAMOS LA ESTRATEGIA",
-            description: "Analizamos tu negocio, validamos tu idea y trazamos un plan de acción sostenible en el tiempo."
+            description: "Priorizamos entre 1 y 3 frentes, diseñamos el modelo comercial, propuesta de valor, segmentación, pipeline, indicadores y, sobre todo, lo que no haremos."
         },
         {
             id: 2,
@@ -44,7 +44,7 @@ export default function MetodologiaSection() {
             id: 3,
             image: "/images/section_metodologia_3.webp",
             title: "SOSTENEMOS LA EJECUCIÓN",
-            description: "Te acompañamos en el proceso para asegurar que los planes no se queden solo en papel."
+            description: "Implementación con seguimiento semanal, en donde “haces las tareas”, ves avances medibles para sostener hábitos nuevos y evitar caer en el “modo anterior."
         }
     ];
 
@@ -97,6 +97,7 @@ export default function MetodologiaSection() {
                         slidesPerView={'auto'}
                         initialSlide={1}
                         loop={true}
+                        watchSlidesProgress={true}
                         autoplay={{
                             delay: 5000,
                             disableOnInteraction: false,
@@ -104,24 +105,27 @@ export default function MetodologiaSection() {
                         coverflowEffect={{
                             rotate: 0,
                             stretch: 0,
-                            depth: 150,
-                            modifier: 2,
+                            depth: 100,
+                            modifier: 1,
                             slideShadows: false,
                         }}
                         modules={[EffectCoverflow, Navigation, Autoplay]}
                         className="metodologia-swiper !overflow-visible"
                     >
-                        {slides.map((slide, index) => (
+                        {([...slides, ...slides, ...slides]).map((slide, index) => (
                             <SwiperSlide
-                                key={slide.id}
+                                key={`${slide.id}-${index}`}
                                 className="!w-[280px] sm:!w-[350px] md:!w-[420px] lg:!w-[500px]"
                             >
                                 {({ isActive }) => (
-                                    <div
-                                        className={`relative rounded-[2.5rem] overflow-hidden transition-all duration-700 aspect-[4/5] shadow-2xl ${isActive
-                                            ? 'scale-100 opacity-100 blur-0 z-20'
-                                            : 'scale-[0.85] opacity-40 blur-[4px] z-10'
-                                            }`}
+                                    <motion.div
+                                        animate={{
+                                            scale: isActive ? 1 : 0.85,
+                                            opacity: isActive ? 1 : 0.4,
+                                            filter: isActive ? 'blur(0px)' : 'blur(4px)',
+                                        }}
+                                        transition={{ duration: 0.5, ease: "easeOut" }}
+                                        className={`relative rounded-[2.5rem] overflow-hidden aspect-[4/5] shadow-2xl z-10 ${isActive ? 'z-20' : 'z-10'}`}
                                     >
                                         {/* Card Image */}
                                         <img
@@ -142,7 +146,7 @@ export default function MetodologiaSection() {
                                                 {slide.description}
                                             </p>
                                         </div>
-                                    </div>
+                                    </motion.div>
                                 )}
                             </SwiperSlide>
                         ))}

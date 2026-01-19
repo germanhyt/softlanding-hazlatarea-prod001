@@ -55,7 +55,7 @@ export default function HeroSection() {
             {/* Content */}
             <div className="container-custom relative z-10 pt-28 pb-32 md:pt-36 md:pb-40">
                 <motion.div
-                    className="max-w-2xl"
+                    className="max-w-[80%] lg:max-w-[60%]"
                     initial="hidden"
                     animate="visible"
                     variants={staggerContainer}

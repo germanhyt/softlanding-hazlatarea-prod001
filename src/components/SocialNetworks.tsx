@@ -19,7 +19,7 @@ const SocialNetworks = () => {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Contáctanos"
-          href="https://api.whatsapp.com/send?phone=+51969977934&text=Hola👋,%20me%20puede%20brindar%20más%20información sobre los cursos..."
+          href="https://api.whatsapp.com/send?phone=+51&text=Hola👋,%20me%20puede%20brindar%20más%20información..."
         >
           <FaWhatsapp className="text-5xl text-white" />
         </a>

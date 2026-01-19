@@ -6,4 +6,3 @@ export { default as ServiciosSection } from './ServiciosSection';
 export { default as FounderSection } from './FounderSection';
 export { default as ParaEmprendedoresSection } from './ParaEmprendedoresSection';
 export { default as CostoRealSection } from './CostoRealSection';
-export { default as ContactSection } from './ContactSection';

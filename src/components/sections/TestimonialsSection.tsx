@@ -67,7 +67,7 @@ export default function TestimonialsSection() {
 
     return (
         <section
-            id="testimonios"
+            id="casos"
             ref={sectionRef}
             className="py-20 md:py-32 bg-[#48A57A] overflow-hidden"
         >
