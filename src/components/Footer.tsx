@@ -14,7 +14,7 @@ export default function Footer() {
         { name: "La metodología", href: "#metodologia" },
         { name: "Cómo te ayudamos", href: "#servicios" },
         { name: "Sobre nosotros", href: "#founder" },
-        { name: "Casos de éxito", href: "#testimonios" }
+        { name: "Casos de éxito", href: "#casos" }
     ];
 
     return (
