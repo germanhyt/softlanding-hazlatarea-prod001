@@ -65,7 +65,7 @@ export default function FounderSection() {
 
                             {/* LinkedIn Icon Overlay */}
                             <motion.a
-                                href={siteConfig.social.linkedin}
+                                href={siteConfig.social.linkedinPersonal}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="absolute bottom-6 left-6 w-10 h-10 md:w-12 md:h-12 bg-white rounded-full 

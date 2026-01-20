@@ -17,10 +17,11 @@ export const siteConfig = {
 
     // Redes sociales
     social: {
-        instagram: "https://instagram.com/hazlatarea",
-        linkedin: "https://linkedin.com/company/hazlatarea",
-        tiktok: "https://tiktok.com/@hazlatarea",
-        youtube: "https://youtube.com/@hazlatarea",
+        instagram: "https://www.instagram.com/hazlatarea.la/",
+        linkedin: "https://www.linkedin.com/company/haz-la-tarea",
+        tiktok: "https://www.tiktok.com/@hazlatarea.la",
+        // youtube: "https://youtube.com/@hazlatarea",
+        linkedinPersonal: "https://www.linkedin.com/in/naddia-schiaffino",
     },
 
     // Navegación principal
@@ -36,8 +37,11 @@ export const siteConfig = {
     contact: {
         phone: "+51 999 999 999",
         email: "contacto@hazlatarea.pe",
-        whatsapp: "https://wa.me/51999999999",
+        // href="https://api.whatsapp.com/send?phone=+51999459707&text=Hola👋,.."
+        // ref de whats con mensaje de "Hola 👋, requiero la asesoría gratuita..."
+        whatsapp: "https://api.whatsapp.com/send?phone=+51999459707&text=Hola👋,%20me%20puede%20brindar%20la%20asesoría%20gratuita..."
     },
+
 
     // CTA principal
     cta: {
