@@ -71,21 +71,21 @@ export default function CostoRealSection() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
 
                         {/* Left Side: Title and Big Arrow */}
-                        <div className="relative h-full flex flex-col justify-start pt-[4rem] lg:pr-12 ">
+                        <div className="relative h-full flex flex-col justify-start pt-[4rem] lg:pr-12">
                             <motion.div
                                 initial={{ opacity: 0, x: -50 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 transition={{ duration: 0.8 }}
-                                className="z-20 relative"
+                                className="z-20 absolute sm:relative "
                             >
-                                <h2 className="font-impact text-[2rem] sm:text-[4rem] md:text-[5rem] lg:text-[4rem] xl:text-[5rem] text-black leading-[0.95] uppercase max-w-2xl">
+                                <h2 className="font-impact text-[2rem] sm:text-[2rem] md:text-[3.5rem] lg:text-[4rem] xl:text-[5rem] text-black leading-[0.95] uppercase max-w-[16rem] sm:max-w-2xl">
                                     El costo real de avanzar sin una estrategia clara
                                 </h2>
                             </motion.div>
 
                             {/* Big White Arrow Illustration */}
                             <motion.div
-                                className="relative lg:absolute top-[4rem] lg:top-[15rem] left-[-4rem] xl:top-auto lg:bottom-[-4rem] lg:left-[-8rem] z-10 w-[22rem] sm:w-[30rem] lg:w-[28rem] xl:w-[50rem] opacity-40 lg:opacity-90 pointer-events-none"
+                                className="relative sm:absolute top-[6.5rem] sm:top-[10rem] md:top-[12rem] lg:top-[22rem] xl:top-[15rem] left-[-4rem] 2xl:top-auto lg:bottom-[-2rem] lg:left-[-8rem] z-10 w-[12rem] sm:w-[24rem] lg:w-[28rem] xl:w-[50rem] opacity-40 lg:opacity-90 pointer-events-none"
                                 initial={{ opacity: 0, y: 100, rotate: -10 }}
                                 whileInView={{ opacity: 1, y: 0, rotate: 0 }}
                                 transition={{ duration: 1, delay: 0.2 }}
@@ -122,14 +122,14 @@ export default function CostoRealSection() {
                                     className="costo-real-swiper w-full"
                                 >
                                     {cardsData.map((card, index) => (
-                                        <SwiperSlide key={index} className="min-h-[36rem] sm:min-h-[42rem] rounded-[2.5rem] bg-[#FFB84D] shadow-2xl overflow-hidden">
+                                        <SwiperSlide key={index} className="min-h-[28rem] sm:min-h-[28rem] lg:min-h-[42rem] rounded-[2.5rem] bg-[#FFB84D] shadow-2xl overflow-hidden">
                                             <div className="p-8 md:p-12 flex flex-col h-full relative">
                                                 {/* Illustration inside the card */}
                                                 <div className="flex justify-center mb-8">
                                                     <motion.img
                                                         src={card.image}
                                                         alt=""
-                                                        className="w-40 md:w-56 h-auto drop-shadow-xl"
+                                                        className="h-[8rem] w-auto md:w-56 md:h-auto drop-shadow-xl"
                                                         animate={{
                                                             y: [0, -10, 0],
                                                             rotate: [0, 1, 0, -1, 0]
@@ -143,7 +143,7 @@ export default function CostoRealSection() {
                                                 </div>
 
                                                 {/* Content */}
-                                                <div className="min-h-[3rem] sm:min-h-[6rem] flex-1 space-y-4">
+                                                <div className="min-h-[4rem] sm:min-h-[6rem] flex-1 space-y-4">
                                                     <div className="text-black text-base md:text-lg leading-relaxed whitespace-pre-line font-medium opacity-90">
                                                         {card.content}
                                                     </div>

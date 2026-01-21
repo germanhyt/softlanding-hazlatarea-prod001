@@ -113,7 +113,7 @@ export default function FounderSection() {
                                 href={siteConfig.contact.whatsapp}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 px-10 py-4 rounded-full text-lg font-bold uppercase
+                                className="inline-flex items-center gap-2 px-10 py-4 rounded-full text-lg font-medium text-center uppercase
                                            bg-gradient-to-r from-[#9d72e7] to-[#f5a623] text-white
                                            shadow-xl shadow-black/10 transition-all duration-300 tracking-wide"
                                 whileHover={{ scale: 1.05, y: -2 }}
