@@ -26,9 +26,9 @@ export default {
                 },
             },
             fontFamily: {
-                impact: ['Impact', 'Haettenschweiler', 'Arial Narrow Bold', 'sans-serif'],
-                amsi: ['AmsiPro', 'sans-serif'],
-                sans: ['AmsiPro', 'system-ui', 'sans-serif'],
+                impact: ['Impact', 'Anton', 'Haettenschweiler', 'Arial Narrow Bold', 'sans-serif'],
+                amsi: ['AmsiPro', 'Outfit', 'sans-serif'],
+                sans: ['AmsiPro', 'Outfit', 'system-ui', 'sans-serif'],
             },
             colors: {
                 primary: {
