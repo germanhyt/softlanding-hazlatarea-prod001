@@ -282,7 +282,7 @@
 
 .swiper-metodologia .swiper-slide-prev,
 .swiper-metodologia .swiper-slide-next {
-    @apply opacity-60 scale-95 blur-[2px];
+    @apply opacity-85 scale-95 blur-[2px];
 }
 
 /* Swiper for services - edge to edge */
@@ -306,7 +306,7 @@
 /* Swiper for Costo Real - Stacked Cards */
 .costo-real-swiper {
     @apply overflow-visible !important;
-    padding: 20px 0 40px 0 !important;
+    padding: 20px 0 20px 0 !important;
 }
 
 .costo-real-swiper .swiper-pagination {

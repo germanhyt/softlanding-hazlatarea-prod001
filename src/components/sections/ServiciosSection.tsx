@@ -123,10 +123,13 @@ export default function ServiciosSection() {
                         {services.map((service) => (
                             <SwiperSlide
                                 key={service.id}
-                                className="!w-[290px] sm:!w-[350px] md:!w-[400px] lg:!w-[450px]"
+                                className="!w-[290px] sm:!w-[350px] md:!w-[400px] lg:!w-[450px] "
                             >
                                 <motion.div
-                                    className="bg-white rounded-[2rem] overflow-hidden shadow-xl shadow-black/5 flex flex-col h-full border border-gray-100"
+                                    className="bg-white rounded-[2rem] overflow-hidden 
+                                    shadow-xl shadow-black/5 flex flex-col h-full border border-gray-100
+                                    min-h-[32.5rem] sm:min-h-[33rem] md:min-h-[34rem] lg:min-h-[37rem]
+                                    "
                                     whileHover={{ y: -8 }}
                                     transition={{ duration: 0.3 }}
                                 >
@@ -151,7 +154,7 @@ export default function ServiciosSection() {
                                         <h3 className="font-impact text-2xl md:text-3xl text-black uppercase mb-4 tracking-tight">
                                             {service.title}
                                         </h3>
-                                        <p className="text-gray-600 text-sm md:text-base leading-relaxed line-clamp-6 mb-2">
+                                        <p className="text-gray-600 text-sm md:text-base leading-relaxed  mb-2">
                                             {service.description}
                                         </p>
                                     </div>
