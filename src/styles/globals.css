@@ -10,11 +10,17 @@
    For now, using system fonts as fallback.
 */
 
-/* 
+@font-face {
+    font-family: 'Impact';
+    src: url('../assets/fonts/impact.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 @font-face {
     font-family: 'AmsiPro';
-    src: url('/fonts/AmsiPro-Regular.woff2') format('woff2'),
-        url('/fonts/AmsiPro-Regular.woff') format('woff');
+    src: url('../assets/fonts/amsi-pro/AmsiPro-Regular.otf') format('opentype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -22,8 +28,7 @@
 
 @font-face {
     font-family: 'AmsiPro';
-    src: url('/fonts/AmsiPro-Bold.woff2') format('woff2'),
-        url('/fonts/AmsiPro-Bold.woff') format('woff');
+    src: url('../assets/fonts/amsi-pro/AmsiPro-Bold.otf') format('opentype');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
@@ -31,13 +36,11 @@
 
 @font-face {
     font-family: 'AmsiPro';
-    src: url('/fonts/AmsiPro-SemiBold.woff2') format('woff2'),
-        url('/fonts/AmsiPro-SemiBold.woff') format('woff');
+    src: url('../assets/fonts/amsi-pro/AmsiPro-SemiBold.otf') format('opentype');
     font-weight: 600;
     font-style: normal;
     font-display: swap;
 }
-*/
 
 /* ===================================
    BASE LAYER
