@@ -67,25 +67,27 @@ export default function CostoRealSection() {
             style={{ height: `${cardsData.length * 90}vh` }} // Altura para controlar la velocidad del scroll
         >
             <div className="sticky top-0 h-screen flex items-center overflow-hidden">
-                <div className="container-custom relative z-10 w-full py-16 md:py-24">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+                <div className="container-custom relative z-10 w-full ">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 sm:gap-28 md:gap-28 lg:gap-24 items-center xl:mt-10">
 
                         {/* Left Side: Title and Big Arrow */}
-                        <div className="relative h-full flex flex-col justify-start pt-[4rem] lg:pr-12">
+                        <div className="relative h-full flex flex-col justify-start pt-[3rem] sm:pt-[4rem] lg:pt-[4rem] lg:pr-12">
                             <motion.div
                                 initial={{ opacity: 0, x: -50 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 transition={{ duration: 0.8 }}
                                 className="z-20 absolute sm:relative "
                             >
-                                <h2 className="font-impact text-[2rem] sm:text-[2rem] md:text-[3.5rem] lg:text-[4rem] xl:text-[5rem] text-black leading-[0.95] uppercase max-w-[16rem] sm:max-w-2xl">
+                                <h2 className="font-impact text-[2rem] sm:text-[2rem] md:text-[2.5rem] lg:text-[4rem] xl:text-[4.5rem] 3xl:text-[5rem] text-black leading-[0.95] uppercase max-w-[16rem] sm:max-w-2xl">
                                     El costo real de avanzar sin una estrategia clara
                                 </h2>
                             </motion.div>
 
                             {/* Big White Arrow Illustration */}
                             <motion.div
-                                className="relative sm:absolute top-[6.5rem] sm:top-[10rem] md:top-[12rem] lg:top-[22rem] xl:top-[15rem] left-[-4rem] 2xl:top-auto lg:bottom-[-2rem] lg:left-[-8rem] z-10 w-[12rem] sm:w-[24rem] lg:w-[28rem] xl:w-[50rem] opacity-40 lg:opacity-90 pointer-events-none"
+                                className="relative sm:absolute top-[7rem] sm:top-[9rem] md:top-[12rem] lg:top-[22rem] xl:top-[20rem] 3xl:top-[22rem] left-[-4rem] 
+                                2xl:top-auto lg:bottom-[-2rem] lg:left-[-8rem] z-10 
+                                w-[12rem] sm:w-[16rem] md:w-[18rem] lg:w-[36rem] xl:w-[45rem] 3xl:w-[48rem] opacity-40 lg:opacity-90 pointer-events-none"
                                 initial={{ opacity: 0, y: 100, rotate: -10 }}
                                 whileInView={{ opacity: 1, y: 0, rotate: 0 }}
                                 transition={{ duration: 1, delay: 0.2 }}
@@ -99,9 +101,9 @@ export default function CostoRealSection() {
                         </div>
 
                         {/* Right Side: Stacked Cards Carousel */}
-                        <div className="relative z-20 w-full flex justify-center lg:justify-end mt-12 lg:mt-0 mx-5">
+                        <div className="relative z-20 w-full flex justify-center lg:justify-end mt-12 mx-auto lg:mt-0 ">
                             <motion.div
-                                className="w-full max-w-[34rem]"
+                                className="w-full max-w-[24rem] sm:max-w-[34rem]"
                                 initial={{ opacity: 0, scale: 0.9, x: 50 }}
                                 whileInView={{ opacity: 1, scale: 1, x: 0 }}
                                 transition={{ duration: 0.8, delay: 0.4 }}
@@ -129,7 +131,7 @@ export default function CostoRealSection() {
                                                     <motion.img
                                                         src={card.image}
                                                         alt=""
-                                                        className="h-[8rem] w-auto md:w-56 md:h-auto drop-shadow-xl"
+                                                        className="w-[10rem] lg:w-[14rem] h-auto drop-shadow-xl"
                                                         animate={{
                                                             y: [0, -10, 0],
                                                             rotate: [0, 1, 0, -1, 0]
@@ -143,8 +145,8 @@ export default function CostoRealSection() {
                                                 </div>
 
                                                 {/* Content */}
-                                                <div className="min-h-[4rem] sm:min-h-[6rem] flex-1 space-y-4">
-                                                    <div className="text-black text-base md:text-lg leading-relaxed whitespace-pre-line font-medium opacity-90">
+                                                <div className="min-h-[5.5rem] sm:min-h-[6rem] flex-1 space-y-4">
+                                                    <div className="text-black text-sm md:text-base lg:text-lg leading-relaxed whitespace-pre-line font-medium opacity-90">
                                                         {card.content}
                                                     </div>
                                                 </div>
@@ -152,7 +154,7 @@ export default function CostoRealSection() {
                                                 {/* Footer / Solution */}
                                                 <div className="flex items-end justify-between mt-8 pt-6 border-t border-black/10 gap-4">
                                                     <div className="flex-1">
-                                                        <p className="text-black font-bold italic text-sm md:text-lg ">
+                                                        <p className="text-black font-bold italic text-sm md:text-base lg:text-lg ">
                                                             {card.footer}
                                                         </p>
                                                     </div>
@@ -162,7 +164,7 @@ export default function CostoRealSection() {
                                                         <img
                                                             src="/images/section_costo_real_arrow_1.png"
                                                             alt="Flechas"
-                                                            className="w-[8rem] md:w-[14rem] h-auto"
+                                                            className="w-[8rem] md:w-[10rem] lg:w-[14rem] h-auto"
                                                         />
                                                     </div>
                                                 </div>

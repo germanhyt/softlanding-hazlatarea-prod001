@@ -53,7 +53,7 @@ export default function MetodologiaSection() {
         visible: {
             opacity: 1,
             y: 0,
-            transition: { duration: 0.8, ease: "easeOut" as const }
+            transition: { duration: 0.2, ease: "easeOut" as const }
         }
     };
 
@@ -90,29 +90,25 @@ export default function MetodologiaSection() {
                 <div className="relative px-4 md:px-0">
                     <Swiper
                         onSwiper={(swiper) => { swiperRef.current = swiper; }}
-                        onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+                        onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
                         effect={'coverflow'}
                         grabCursor={true}
                         centeredSlides={true}
                         slidesPerView={'auto'}
                         initialSlide={1}
-                        loop={true}
+                        loop={false}
                         watchSlidesProgress={true}
-                        autoplay={{
-                            delay: 5000,
-                            disableOnInteraction: false,
-                        }}
                         coverflowEffect={{
                             rotate: 0,
-                            stretch: 0,
+                            stretch: 10,
                             depth: 100,
-                            modifier: 1,
+                            modifier: 2,
                             slideShadows: false,
                         }}
-                        modules={[EffectCoverflow, Navigation, Autoplay]}
-                        className="metodologia-swiper !overflow-visible"
+                        modules={[EffectCoverflow, Navigation]}
+                        className="swiper-metodologia !overflow-visible"
                     >
-                        {([...slides, ...slides, ...slides]).map((slide, index) => (
+                        {slides.map((slide, index) => (
                             <SwiperSlide
                                 key={`${slide.id}-${index}`}
                                 className="!w-[280px] sm:!w-[350px] md:!w-[420px] lg:!w-[500px]"
@@ -120,8 +116,8 @@ export default function MetodologiaSection() {
                                 {({ isActive }) => (
                                     <motion.div
                                         animate={{
-                                            scale: isActive ? 1 : 0.85,
-                                            opacity: isActive ? 1 : 0.4,
+                                            scale: isActive ? 1 : 0.9,
+                                            // opacity: isActive ? 1 : 0.85,
                                             filter: isActive ? 'blur(0px)' : 'blur(4px)',
                                         }}
                                         transition={{ duration: 0.5, ease: "easeOut" }}
