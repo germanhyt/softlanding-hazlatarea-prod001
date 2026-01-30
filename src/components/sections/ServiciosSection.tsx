@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { motion, useInView, type Variants } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay, FreeMode } from 'swiper/modules';
+import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
 import { siteConfig } from '../../config/site.config';
 
 // Import Swiper styles
@@ -98,7 +99,7 @@ export default function ServiciosSection() {
                 {/* Section Header - With container */}
                 <div className="container-custom">
                     <motion.div
-                        className="text-left mb-16 md:mb-20 max-w-3xl"
+                        className="mb-16 md:mb-20"
                         initial="hidden"
                         animate={isInView ? "visible" : "hidden"}
                         variants={titleVariants}
@@ -111,59 +112,83 @@ export default function ServiciosSection() {
                 </div>
 
                 {/* Swiper Carousel */}
-                <div className="pl-4 sm:pl-6 md:pl-8 lg:pl-[max(2rem,calc((100vw-1280px)/2+2rem))]">
-                    <Swiper
-                        slidesPerView={'auto'}
-                        spaceBetween={30}
-                        freeMode={true}
-                        grabCursor={true}
-                        modules={[Navigation, FreeMode]}
-                        className="!overflow-visible"
-                    >
-                        {services.map((service) => (
-                            <SwiperSlide
-                                key={service.id}
-                                className="!w-[290px] sm:!w-[350px] md:!w-[400px] lg:!w-[450px] "
-                            >
-                                <motion.div
-                                    className="bg-white rounded-[2rem] overflow-hidden 
-                                    shadow-xl shadow-black/5 flex flex-col h-full border border-gray-100
-                                    min-h-[32.5rem] sm:min-h-[33rem] md:min-h-[34rem] lg:min-h-[37rem]
-                                    "
-                                    whileHover={{ y: -8 }}
-                                    transition={{ duration: 0.3 }}
+                <div className="relative group">
+                    <div className="pl-4 sm:pl-6 md:pl-8 lg:pl-[max(2rem,calc((100vw-1280px)/2+2rem))]">
+                        <Swiper
+                            slidesPerView={'auto'}
+                            spaceBetween={30}
+                            freeMode={true}
+                            grabCursor={true}
+                            navigation={{
+                                prevEl: '.servicios-prev',
+                                nextEl: '.servicios-next',
+                            }}
+                            modules={[Navigation, FreeMode]}
+                            className="!overflow-visible"
+                        >
+                            {services.map((service) => (
+                                <SwiperSlide
+                                    key={service.id}
+                                    className="!w-[290px] sm:!w-[350px] md:!w-[400px] lg:!w-[450px] "
                                 >
-                                    {/* Card Image and Badge */}
-                                    <div className="relative aspect-[16/10] overflow-hidden p-3 pb-0">
-                                        <div className="w-full h-full rounded-t-[1.5rem] overflow-hidden relative">
-                                            <img
-                                                src={service.image}
-                                                alt={service.title}
-                                                className="w-full h-full object-cover"
-                                                loading="lazy"
-                                            />
-                                            {/* Badge Overlay */}
-                                            <div className={`absolute top-4 right-4 ${service.badgeColor} text-white text-[10px] md:text-xs font-bold uppercase py-1.5 px-4 rounded-full shadow-lg`}>
-                                                {service.badge}
+                                    <motion.div
+                                        className="bg-white rounded-[2rem] overflow-hidden 
+                                        shadow-xl shadow-black/5 flex flex-col h-full border border-gray-100
+                                        min-h-[32.5rem] sm:min-h-[33rem] md:min-h-[34rem] lg:min-h-[37rem]
+                                        "
+                                        whileHover={{ y: -8 }}
+                                        transition={{ duration: 0.3 }}
+                                    >
+                                        {/* Card Image and Badge */}
+                                        <div className="relative aspect-[16/10] overflow-hidden p-3 pb-0">
+                                            <div className="w-full h-full rounded-t-[1.5rem] overflow-hidden relative">
+                                                <img
+                                                    src={service.image}
+                                                    alt={service.title}
+                                                    className="w-full h-full object-cover"
+                                                    loading="lazy"
+                                                />
+                                                {/* Badge Overlay */}
+                                                <div className={`absolute top-4 right-4 ${service.badgeColor} text-white text-[10px] md:text-xs font-bold uppercase py-1.5 px-4 rounded-full shadow-lg`}>
+                                                    {service.badge}
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                    {/* Card Content */}
-                                    <div className="p-8 md:p-10 flex flex-col flex-1">
-                                        <h3 className="font-impact text-2xl md:text-3xl text-black uppercase mb-4 tracking-tight">
-                                            {service.title}
-                                        </h3>
-                                        <p className="text-gray-600 text-sm md:text-base leading-relaxed  mb-2">
-                                            {service.description}
-                                        </p>
-                                    </div>
-                                </motion.div>
-                            </SwiperSlide>
-                        ))}
-                        {/* Extra padding slide for edge effect */}
-                        <SwiperSlide className="!w-12 md:!w-24 lg:!w-48" />
-                    </Swiper>
+                                        {/* Card Content */}
+                                        <div className="p-8 md:p-10 flex flex-col flex-1">
+                                            <h3 className="font-impact text-2xl md:text-3xl text-black uppercase mb-4 tracking-tight">
+                                                {service.title}
+                                            </h3>
+                                            <p className="text-gray-600 text-sm md:text-base leading-relaxed  mb-2">
+                                                {service.description}
+                                            </p>
+                                        </div>
+                                    </motion.div>
+                                </SwiperSlide>
+                            ))}
+                            {/* Extra padding slide for edge effect */}
+                            <SwiperSlide className="!w-12 md:!w-24 lg:!w-48" />
+                        </Swiper>
+                    </div>
+
+                    {/* Desktop Navigation Buttons */}
+                    <button className="servicios-prev absolute left-2 lg:left-8 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full border border-gray-200 bg-white items-center justify-center text-black hover:bg-black hover:text-white transition-all duration-300 z-30 disabled:opacity-20 disabled:cursor-not-allowed hidden md:flex shadow-xl">
+                        <HiChevronLeft className="text-3xl" />
+                    </button>
+                    <button className="servicios-next absolute right-2 lg:right-8 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full border border-gray-200 bg-white items-center justify-center text-black hover:bg-black hover:text-white transition-all duration-300 z-30 disabled:opacity-20 disabled:cursor-not-allowed hidden md:flex shadow-xl">
+                        <HiChevronRight className="text-3xl" />
+                    </button>
+                </div>
+
+                {/* Navigation Buttons for Mobile */}
+                <div className="flex md:hidden items-center justify-center gap-8 mt-10">
+                    <button className="servicios-prev w-14 h-14 rounded-full border border-gray-200 bg-white flex items-center justify-center text-black shadow-lg">
+                        <HiChevronLeft className="text-2xl" />
+                    </button>
+                    <button className="servicios-next w-14 h-14 rounded-full border border-gray-200 bg-white flex items-center justify-center text-black shadow-lg">
+                        <HiChevronRight className="text-2xl" />
+                    </button>
                 </div>
 
                 {/* Main CTA */}
@@ -186,7 +211,7 @@ export default function ServiciosSection() {
                         Solicita tu asesoría gratis
                     </motion.a>
                 </motion.div>
-            </div>
-        </section>
+            </div >
+        </section >
     );
 }

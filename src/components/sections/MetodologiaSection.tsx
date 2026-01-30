@@ -3,6 +3,7 @@ import { motion, useInView, type Variants } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Navigation, Autoplay } from 'swiper/modules';
 import type { Swiper as SwiperType } from 'swiper';
+import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
 import { siteConfig } from '../../config/site.config';
 
 // Import Swiper styles
@@ -105,6 +106,10 @@ export default function MetodologiaSection() {
                             modifier: 2,
                             slideShadows: false,
                         }}
+                        navigation={{
+                            prevEl: '.metodologia-prev',
+                            nextEl: '.metodologia-next',
+                        }}
                         modules={[EffectCoverflow, Navigation]}
                         className="swiper-metodologia !overflow-visible"
                     >
@@ -147,6 +152,23 @@ export default function MetodologiaSection() {
                             </SwiperSlide>
                         ))}
                     </Swiper>
+                    {/* Desktop Navigation Buttons - Absolutely positioned at sides */}
+                    <button className="metodologia-prev absolute -left-4 lg:-left-16 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full border-2 border-black bg-white items-center justify-center text-black hover:bg-black hover:text-white transition-all duration-300 z-30 disabled:opacity-20 disabled:cursor-not-allowed hidden md:flex shadow-xl">
+                        <HiChevronLeft className="text-3xl" />
+                    </button>
+                    <button className="metodologia-next absolute -right-4 lg:-right-16 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full border-2 border-black bg-white items-center justify-center text-black hover:bg-black hover:text-white transition-all duration-300 z-30 disabled:opacity-20 disabled:cursor-not-allowed hidden md:flex shadow-xl">
+                        <HiChevronRight className="text-3xl" />
+                    </button>
+
+                    {/* Mobile Navigation Buttons - Positioned below */}
+                    <div className="flex justify-center items-center gap-8 mt-10 md:hidden relative z-20">
+                        <button className="metodologia-prev w-14 h-14 rounded-full border-2 border-black flex items-center justify-center text-black bg-white active:bg-black active:text-white transition-colors">
+                            <HiChevronLeft className="text-2xl" />
+                        </button>
+                        <button className="metodologia-next w-14 h-14 rounded-full border-2 border-black flex items-center justify-center text-black bg-white active:bg-black active:text-white transition-colors">
+                            <HiChevronRight className="text-2xl" />
+                        </button>
+                    </div>
                 </div>
 
                 {/* Main CTA */}

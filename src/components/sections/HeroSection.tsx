@@ -96,13 +96,13 @@ export default function HeroSection() {
 
             {/* Scroll Indicator */}
             <motion.div
-                className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center"
+                className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center hover:scale-[1.05] transition-all duration-300"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1 }}
             >
                 <motion.div
-                    className="w-16 h-16 rounded-full border border-white/80 flex items-center justify-center cursor-pointer"
+                    className="w-16 h-16 rounded-full border border-white/80 flex items-center justify-center cursor-pointer "
                     animate={{ y: [0, 8, 0] }}
                     transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                     onClick={() => document.getElementById('familiar')?.scrollIntoView({ behavior: 'smooth' })}
