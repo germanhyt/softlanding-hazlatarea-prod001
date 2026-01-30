@@ -1,12 +1,12 @@
 import { useRef } from 'react';
 import { motion, useInView, type Variants } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Autoplay, Pagination } from 'swiper/modules';
+import { Navigation, Autoplay } from 'swiper/modules';
+import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
 
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 
 interface Testimonial {
     id: number;
@@ -24,35 +24,35 @@ export default function TestimonialsSection() {
     const testimonials: Testimonial[] = [
         {
             id: 1,
-            name: "Felipe Quinto",
-            role: "Coca Cola.",
-            company: "Coca Cola.",
-            content: "Conoce la experiencia de nuestros clientes Conoce la experiencia de nuestros clientes Conoce la experiencia de nuestros clientes Conoce la experiencia de nuestros clientes Conoce la experiencia de nuestros clientes Conoce la experiencia de nuestros clientes",
-            avatar: "https://i.pravatar.cc/150?u=felipe"
+            name: "Josué Alfaro",
+            role: "CEO y Fundador",
+            company: "Dinoplanet",
+            content: "En el mundo del comercio electrónico estaba perdido. Necesitaba entender este mundo y no solo viendo tutoriales, sino trabajando con gente que sabe y que es experta en temas de estrategia. Haz La Tarea me lo hizo más claro, más ordenado y hoy por hoy tengo una hoja de ruta con la que estoy encantado. Me gustó mucho el seguimiento; el acompañamiento de Naddia fue A1. La recomendaría porque saben mucho de estrategia y, si no sabes muy bien cómo arranca el proceso, tienes que ir con expertos.",
+            avatar: "/images/logo_dinoplanet.webp"
         },
         {
             id: 2,
-            name: "Naddia Schiaffino",
-            role: "Founder",
-            company: "Haz La Tarea",
-            content: "Trabajar con método y estrategia cambia drásticamente los resultados. No se trata solo de hacer las tareas, sino de hacer las tareas correctas en el orden correcto.",
-            avatar: "https://i.pravatar.cc/150?u=felipe"
+            name: "Carlos Esboña",
+            role: "CEO y CoFundador",
+            company: "Top Gift Brands",
+            content: "Conocí a Naddia en un taller que dictó llamado 'Arma tu estrategia comercial', y la forma tan clara de abordar los temas comerciales y presupuestales no solo me dejó satisfecho, sino que superó ampliamente mis expectativas. Luego de eso la contacté y así conocí a la consultora Haz La Tarea. Después de llevar las primeras sesiones y del acompañamiento posterior constante, la recomiendo definitivamente porque no solo nos ayudó a establecer el norte estratégico del negocio, sino que también nos ayudó a plasmar ese norte en acciones y metas concretas. Los resultados se vieron desde el inicio. Además, siempre nos acompaña y nos sigue ayudando a no perder el norte para poder llegar a los objetivos planteados.",
+            avatar: "/images/logo_topgift.webp"
         },
         {
             id: 3,
-            name: "Juan Perez",
-            role: "Director",
-            company: "Tech Start",
-            content: "La claridad que obtuvimos en las primeras sesiones nos permitió pivotar a tiempo y salvar el semestre. Altamente recomendado para quienes se sienten estancados.",
-            avatar: "https://i.pravatar.cc/150?u=felipe"
+            name: "Daphy Cavero",
+            role: "CoFundadora",
+            company: "Awake",
+            content: "La sesión de claridad, tal cual su nombre lo indica, nos trajo claridad primero sobre la segmentación, la investigación y la personalización para hacer el approach a los clientes potenciales, a las personas con las que queremos conectar en las empresas. Eso me pareció muy valioso, porque era algo que no teníamos contemplado, así que fue un gran insight. Por otro lado, también nos ayudó a calcular la cantidad de contactos comerciales que tenemos que hacer, a nivel anual, mensual e incluso diario. Todo eso llevado a pequeñas acciones diarias y a entender todo lo que se puede lograr, y cómo cada mensaje diario nos va a ayudar a llegar a los objetivos planteados. Me pareció muy interesante esa parte de desagregar nuestro objetivo de ventas en números y, a partir de ahí, definir cuáles son las acciones diarias, qué enfoque darles y cómo hacerlo con estrategia.",
+            avatar: "/images/logo_awake.webp"
         },
         {
             id: 4,
-            name: "Maria Garcia",
-            role: "CEO",
-            company: "Moda Sostenible",
-            content: "Haz La Tarea nos ayudó a estructurar nuestro crecimiento comercial de forma orgánica y sostenible. Ahora tenemos un norte claro y sabemos qué pasos dar.",
-            avatar: "https://i.pravatar.cc/150?u=felipe"
+            name: "Andrea Lenz",
+            role: "CEO y Fundadora",
+            company: "BTL Lenz",
+            content: "En BLT Lenz, teníamos un reto importante: nuestras ventas llegaban principalmente por referidos y estaban muy concentradas en pocos clientes. Eso nos daba resultados pero, también, mucha incertidumbre. Con \"Haz La Tarea\" trabajamos cómo diseñar una estrategia comercial más proactiva, que nos permitiera dejar de reaccionar y empezar a predecir el ingreso de ventas, además de reducir la dependencia de algunos clientes. Nos dio mucha claridad y apertura de perspectiva más estratégica, no solo sobre ventas, sino sobre el negocio en general. Salimos con un norte claro y con una forma distinta de pensar y gestionar nuestro crecimiento.",
+            avatar: "/images/logo_lenz.webp"
         }
     ];
 
@@ -86,49 +86,60 @@ export default function TestimonialsSection() {
                 </motion.div>
 
                 {/* Swiper Carousel */}
-                <div className="px-4">
+                <div className="relative group px-10 md:px-14">
+                    {/* Navigation Buttons */}
+                    <button className="testimonials-prev absolute left-0 top-1/2 -translate-y-1/2 w-10 md:w-12 h-10 md:h-12 rounded-full bg-white flex items-center justify-center text-[#48A57A] shadow-lg z-20 transition-all hover:bg-white hover:scale-110 disabled:opacity-30 disabled:cursor-not-allowed">
+                        <HiChevronLeft className="text-2xl md:text-3xl" />
+                    </button>
+                    <button className="testimonials-next absolute right-0 top-1/2 -translate-y-1/2 w-10 md:w-12 h-10 md:h-12 rounded-full bg-white flex items-center justify-center text-[#48A57A] shadow-lg z-20 transition-all hover:bg-white hover:scale-110 disabled:opacity-30 disabled:cursor-not-allowed">
+                        <HiChevronRight className="text-2xl md:text-3xl" />
+                    </button>
+
                     <Swiper
-                        modules={[Navigation, Autoplay, Pagination]}
+                        modules={[Navigation, Autoplay]}
                         spaceBetween={20}
                         slidesPerView={1}
-                        loop={true}
+                        loop={false}
+                        navigation={{
+                            prevEl: '.testimonials-prev',
+                            nextEl: '.testimonials-next',
+                        }}
                         autoplay={{
                             delay: 5000,
                             disableOnInteraction: false,
                         }}
                         breakpoints={{
                             640: { slidesPerView: 2, spaceBetween: 24 },
-                            1024: { slidesPerView: 3, spaceBetween: 30 },
-                            1280: { slidesPerView: 4, spaceBetween: 30 }
+                            1024: { slidesPerView: 3, spaceBetween: 30 }
                         }}
                         className="testimonials-swiper !overflow-visible"
                     >
                         {testimonials.map((testimonial) => (
                             <SwiperSlide key={testimonial.id}>
-                                <div className="min-h-[22rem] bg-white rounded-[1rem] p-8 h-full flex flex-col shadow-xl">
-                                    {/* User Info */}
-                                    <div className="flex items-center gap-4 mb-6">
-                                        <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-[#48A57A]/20">
-                                            <img
-                                                src={testimonial.avatar}
-                                                alt={testimonial.name}
-                                                className="w-full h-full object-cover"
-                                            />
-                                        </div>
-                                        <div>
-                                            <h4 className="font-bold text-black text-lg leading-tight">
-                                                {testimonial.name}
-                                            </h4>
-                                            <p className="text-gray-500 text-sm">
-                                                {testimonial.role}
-                                            </p>
-                                        </div>
+                                <div className="min-h-[38rem] md:min-h-[42rem] lg:min-h-[44rem] bg-white rounded-[2rem] p-8 md:p-10 h-full flex flex-col shadow-xl">
+                                    {/* Company Logo */}
+                                    <div className="h-16 mb-8 flex items-center justify-start">
+                                        <img
+                                            src={testimonial.avatar}
+                                            alt={testimonial.company}
+                                            className="max-h-full max-w-[150px] object-contain"
+                                        />
                                     </div>
 
                                     {/* Quote Text */}
-                                    <p className="text-gray-700 text-sm md:text-base leading-relaxed flex-1 italic">
-                                        {testimonial.content}
+                                    <p className="text-gray-700 text-sm leading-relaxed flex-1 italic mb-8">
+                                        "{testimonial.content}"
                                     </p>
+
+                                    {/* Author Info */}
+                                    <div className="mt-auto border-t border-gray-100 pt-6">
+                                        <h4 className="font-bold text-black text-lg leading-tight uppercase">
+                                            {testimonial.name}
+                                        </h4>
+                                        <p className="text-black font-medium text-sm mt-1">
+                                            {testimonial.role} - {testimonial.company}
+                                        </p>
+                                    </div>
                                 </div>
                             </SwiperSlide>
                         ))}
