@@ -20,7 +20,7 @@ export default function CostoRealSection() {
     const cardsData = [
         {
             image: "/images/section_costo_real_2.png",
-            content: "Tu energía se divide y terminas avanzando a medias.\nVentas, campañas, mejoras, alianzas... haces \"un poquito de todo\" y nada termina de despegar.",
+            content: "• Tu energía se divide y terminas avanzando a medias.\n • Ventas, campañas, mejoras, alianzas... haces \"un poquito de todo\" y nada termina de despegar.",
             footer: "hasta que ordenamos el caos y definimos qué va primero, qué espera y qué hoy no suma."
         },
         {
@@ -131,13 +131,13 @@ export default function CostoRealSection() {
                                                     <motion.img
                                                         src={card.image}
                                                         alt=""
-                                                        className="w-[10rem] lg:w-[14rem] h-auto drop-shadow-xl"
+                                                        className="w-fit max-h-[10rem] lg:max-h-[16rem] drop-shadow-xl"
                                                         animate={{
                                                             y: [0, -10, 0],
                                                             rotate: [0, 1, 0, -1, 0]
                                                         }}
                                                         transition={{
-                                                            duration: 6,
+                                                            duration: 2,
                                                             repeat: Infinity,
                                                             ease: "easeInOut"
                                                         }}
@@ -146,7 +146,7 @@ export default function CostoRealSection() {
 
                                                 {/* Content */}
                                                 <div className="min-h-[5.5rem] sm:min-h-[6rem] flex-1 space-y-4">
-                                                    <div className="text-black text-sm md:text-base lg:text-lg leading-relaxed whitespace-pre-line font-medium opacity-90">
+                                                    <div className=" text-black text-sm md:text-base lg:text-lg leading-relaxed whitespace-pre-line font-medium opacity-90">
                                                         {card.content}
                                                     </div>
                                                 </div>

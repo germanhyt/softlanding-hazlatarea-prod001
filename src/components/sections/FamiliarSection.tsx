@@ -146,7 +146,7 @@ export default function FamiliarSection() {
                         transition={{ duration: 0.6, delay: 0.2 }}
                     >
                         <img
-                            src="/images/section_suena_familiar_1.png"
+                            src="/images/section_suena_familiar_1.webp"
                             alt="Emprendedora trabajando"
                             className="w-full h-auto"
                             loading="lazy"
