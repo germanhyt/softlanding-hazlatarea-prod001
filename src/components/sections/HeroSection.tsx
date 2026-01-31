@@ -96,7 +96,7 @@ export default function HeroSection() {
 
             {/* Scroll Indicator */}
             <motion.div
-                className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center hover:scale-[1.05] transition-all duration-300"
+                className="z-[50] absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center hover:scale-[1.05] transition-all duration-300"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1 }}
