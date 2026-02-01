@@ -68,7 +68,7 @@ export default function CostoRealSection() {
         >
             <div className="sticky top-0 h-screen flex items-center overflow-hidden">
                 <div className="container-custom relative z-10 w-full ">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 sm:gap-28 md:gap-28 lg:gap-24 items-center xl:mt-10">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-18 sm:gap-28 md:gap-28 lg:gap-24 items-center xl:mt-10">
 
                         {/* Left Side: Title and Big Arrow */}
                         <div className="relative h-full flex flex-col justify-start pt-[3rem] sm:pt-[4rem] lg:pt-[4rem] lg:pr-12">
@@ -124,7 +124,7 @@ export default function CostoRealSection() {
                                     className="costo-real-swiper w-full"
                                 >
                                     {cardsData.map((card, index) => (
-                                        <SwiperSlide key={index} className="min-h-[28rem] sm:min-h-[28rem] lg:min-h-[42rem] rounded-[2.5rem] bg-[#FFB84D] shadow-2xl overflow-hidden">
+                                        <SwiperSlide key={index} className="min-h-[34rem] xs:min-h-[32rem] sm:min-h-[28rem] lg:min-h-[42rem] rounded-[2.5rem] bg-[#FFB84D] shadow-2xl overflow-hidden">
                                             <div className="p-8 md:p-12 flex flex-col h-full relative">
                                                 {/* Illustration inside the card */}
                                                 <div className="flex justify-center mb-8">

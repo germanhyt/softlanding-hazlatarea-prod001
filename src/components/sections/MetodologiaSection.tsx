@@ -1,14 +1,14 @@
 import { useState, useRef } from 'react';
 import { motion, useInView, type Variants } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCoverflow, Navigation, Autoplay } from 'swiper/modules';
+import { EffectCreative, Navigation, Autoplay } from 'swiper/modules';
 import type { Swiper as SwiperType } from 'swiper';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
 import { siteConfig } from '../../config/site.config';
 
 // Import Swiper styles
 import 'swiper/css';
-import 'swiper/css/effect-coverflow';
+import 'swiper/css/effect-creative';
 import 'swiper/css/navigation';
 
 interface MetodologiaSlide {
@@ -91,48 +91,67 @@ export default function MetodologiaSection() {
                 <div className="relative px-4 md:px-0">
                     <Swiper
                         onSwiper={(swiper) => { swiperRef.current = swiper; }}
-                        onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
-                        effect={'coverflow'}
+                        onSlideChange={(swiper) => setActiveIndex(swiper.realIndex % slides.length)}
+                        effect={'creative'}
                         grabCursor={true}
                         centeredSlides={true}
                         slidesPerView={'auto'}
-                        initialSlide={1}
-                        loop={false}
+                        initialSlide={slides.length}
+                        loop={true}
+                        speed={1000}
                         watchSlidesProgress={true}
-                        coverflowEffect={{
-                            rotate: 0,
-                            stretch: 10,
-                            depth: 100,
-                            modifier: 2,
-                            slideShadows: false,
+                        creativeEffect={{
+                            limitProgress: 3,
+                            prev: {
+                                shadow: false,
+                                translate: ['-115%', 0, -350],
+                                rotate: [0, -30, 0],
+                                opacity: 0.5,
+                            },
+                            next: {
+                                shadow: false,
+                                translate: ['115%', 0, -350],
+                                rotate: [0, 30, 0],
+                                opacity: 0.5,
+                            },
+                        }}
+                        autoplay={{
+                            delay: 4500,
+                            disableOnInteraction: false,
                         }}
                         navigation={{
                             prevEl: '.metodologia-prev',
                             nextEl: '.metodologia-next',
                         }}
-                        modules={[EffectCoverflow, Navigation]}
+                        modules={[EffectCreative, Navigation, Autoplay]}
                         className="swiper-metodologia !overflow-visible"
                     >
-                        {slides.map((slide, index) => (
+                        {[...slides, ...slides, ...slides].map((slide, index) => (
                             <SwiperSlide
-                                key={`${slide.id}-${index}`}
+                                key={`metod-slide-${slide.id}-${index}`}
                                 className="!w-[280px] sm:!w-[350px] md:!w-[420px] lg:!w-[500px]"
                             >
                                 {({ isActive }) => (
                                     <motion.div
                                         animate={{
-                                            scale: isActive ? 1 : 0.9,
-                                            // opacity: isActive ? 1 : 0.85,
+                                            // scale: isActive ? 1 : 0.85,
                                             filter: isActive ? 'blur(0px)' : 'blur(4px)',
                                         }}
-                                        transition={{ duration: 0.5, ease: "easeOut" }}
-                                        className={`relative rounded-[2.5rem] overflow-hidden aspect-[4/5] shadow-2xl z-10 ${isActive ? 'z-20' : 'z-10'}`}
+                                        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                                        className={`relative rounded-[2.5rem] overflow-hidden aspect-[4/5] shadow-2xl transition-all duration-700 ${isActive ? 'z-20' : 'z-10'}`}
+                                        style={{
+                                            perspective: "2000px",
+                                            isolation: 'isolate',
+                                            backfaceVisibility: 'hidden',
+                                            transformStyle: 'preserve-3d'
+                                        }}
                                     >
                                         {/* Card Image */}
                                         <img
                                             src={slide.image}
                                             alt={slide.title}
-                                            className="absolute inset-0 w-full h-full object-cover"
+                                            className="absolute inset-0 w-full h-full object-cover rounded-[2.5rem]"
+                                            style={{ borderRadius: '2.5rem' }}
                                             loading="lazy"
                                         />
 
@@ -153,10 +172,10 @@ export default function MetodologiaSection() {
                         ))}
                     </Swiper>
                     {/* Desktop Navigation Buttons - Absolutely positioned at sides */}
-                    <button className="metodologia-prev absolute -left-4 lg:-left-16 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full border border-black/50 bg-white items-center justify-center text-black hover:bg-black hover:text-white transition-all duration-300 z-30 disabled:opacity-20 disabled:cursor-not-allowed hidden md:flex shadow-xl">
+                    <button className="metodologia-prev absolute -left-4 lg:-left-2 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full border border-black/50 bg-white items-center justify-center text-black hover:bg-black hover:text-white transition-all duration-300 z-30 disabled:opacity-20 disabled:cursor-not-allowed hidden md:flex shadow-xl">
                         <HiChevronLeft className="text-3xl" />
                     </button>
-                    <button className="metodologia-next absolute -right-4 lg:-right-16 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full border border-black/50 bg-white items-center justify-center text-black hover:bg-black hover:text-white transition-all duration-300 z-30 disabled:opacity-20 disabled:cursor-not-allowed hidden md:flex shadow-xl">
+                    <button className="metodologia-next absolute -right-4 lg:-right-2 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full border border-black/50 bg-white items-center justify-center text-black hover:bg-black hover:text-white transition-all duration-300 z-30 disabled:opacity-20 disabled:cursor-not-allowed hidden md:flex shadow-xl">
                         <HiChevronRight className="text-3xl" />
                     </button>
 

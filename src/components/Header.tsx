@@ -164,7 +164,11 @@ export default function Header() {
                                 variants={itemVariants}
                             >
                                 <a
-                                    href="#contacto"
+                                    // href="#contacto"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="Contáctanos"
+                                    href="https://api.whatsapp.com/send?phone=+51999459707&text=Hola👋,%20me%20puede%20brindar%20más%20información..."
                                     className="btn-primary w-full justify-center text-xl py-6 rounded-2xl"
                                     onClick={() => setIsMobileMenuOpen(false)}
                                 >

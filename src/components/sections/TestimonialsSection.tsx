@@ -116,7 +116,7 @@ export default function TestimonialsSection() {
                     >
                         {testimonials.map((testimonial) => (
                             <SwiperSlide key={testimonial.id}>
-                                <div className="min-h-[47.5rem] md:min-h-[44rem] lg:min-h-[46rem] bg-white rounded-[2rem] p-8 md:p-10 h-full flex flex-col shadow-xl">
+                                <div className="min-h-[72rem] xs:min-h-[58rem] sm:min-h-[72rem] md:min-h-[60rem] lg:min-h-[64rem] xl:min-h-[44rem] bg-white rounded-[2rem] p-8 md:p-10 h-full flex flex-col shadow-xl">
                                     {/* Company Logo */}
                                     <div className="h-16 mb-8 flex items-center justify-start">
                                         <img
@@ -127,7 +127,7 @@ export default function TestimonialsSection() {
                                     </div>
 
                                     {/* Quote Text */}
-                                    <p className="text-gray-700 text-sm leading-relaxed flex-1 italic mb-8">
+                                    <p className="text-gray-700 text-sm sm:text-base lg:text-sm leading-relaxed flex-1 italic mb-8">
                                         "{testimonial.content}"
                                     </p>
 

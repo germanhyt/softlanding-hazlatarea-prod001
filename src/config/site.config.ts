@@ -2,8 +2,8 @@ export const siteConfig = {
     name: "Haz La Tarea",
     tagline: "La intención existe, la metodología la vuelve realidad",
     author: "Naddia Schiaffino",
-    url: "https://www.hazlatarea.pe",
-    email: "contacto@hazlatarea.pe",
+    url: "https://www.hazlatarea.la",
+    email: "contacto@hazlatarea.la",
     logo: "/images/logo.png",
 
     // Colores de marca
@@ -36,7 +36,7 @@ export const siteConfig = {
     // Información de contacto
     contact: {
         phone: "+51 999 999 999",
-        email: "contacto@hazlatarea.pe",
+        email: "contacto@hazlatarea.la",
         // href="https://api.whatsapp.com/send?phone=+51999459707&text=Hola👋,.."
         // ref de whats con mensaje de "Hola 👋, requiero la asesoría gratuita..."
         whatsapp: "https://api.whatsapp.com/send?phone=+51999459707&text=Hola👋,%20me%20puede%20brindar%20la%20asesoría%20gratuita..."

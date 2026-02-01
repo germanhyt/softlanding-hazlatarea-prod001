@@ -1,11 +1,11 @@
 # Robots.txt for Haz La Tarea
-# https://www.hazlatarea.pe
+# https://www.hazlatarea.la
 
 User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://www.hazlatarea.pe/sitemap-index.xml
+Sitemap: https://www.hazlatarea.la/sitemap-index.xml
 
 # Crawl-delay
 Crawl-delay: 1

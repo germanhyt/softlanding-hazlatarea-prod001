@@ -29,13 +29,16 @@ export const defaultSEO: SEOConfig = {
         "edtech",
         "startups",
         "coaching empresarial",
-        "metodología de negocios"
+        "metodología de negocios",
+        "agenda una sesión estratégica",
+        "asesoría para emprendedores",
+        "consulta de negocio sin costo",
     ],
     openGraph: {
         title: "Haz La Tarea | Estrategia de Negocios y Emprendimiento",
         description: "Transforma tu emprendimiento con metodología probada. De la intención a la ejecución real.",
         image: "/og-image.jpg",
-        url: "https://www.hazlatarea.pe",
+        url: "https://www.hazlatarea.la",
         type: "website",
     },
     twitter: {
