@@ -18,12 +18,12 @@ export default function FamiliarSection() {
     const painPoints: PainPoint[] = [
         {
             text: "Tienes muchas ideas y no sabes cuál priorizar",
-            position: "top-[25%] left-[2%]",
+            position: "top-[25%] left-[8%]",
             mobilePosition: "top-[18%] left-[0%]"
         },
         {
             text: "Sabes lo que quieres lograr pero no cómo",
-            position: "top-[20%] right-[2%]",
+            position: "top-[18%] right-[6%]",
             mobilePosition: "top-[15%] right-[0%]"
         },
         {
@@ -33,7 +33,7 @@ export default function FamiliarSection() {
         },
         {
             text: "Dejas la planificación para después",
-            position: "top-[55%] right-[0%]",
+            position: "top-[50%] right-[0%]",
             mobilePosition: "top-[50%] right-[0%]"
         },
         {
@@ -95,7 +95,7 @@ export default function FamiliarSection() {
         <section
             id="familiar"
             ref={sectionRef}
-            className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#F9F7F2] py-20 px-4"
+            className="relative h-[calc(100vh-6rem)] sm:min-h-screen flex items-center justify-center overflow-hidden bg-[#F9F7F2] sm:py-20 px-4"
         >
             {/* Corner Images - Purple Waves */}
             <motion.div
@@ -127,7 +127,7 @@ export default function FamiliarSection() {
             <div className="container-custom relative z-10 w-full flex flex-col items-center">
                 {/* Title */}
                 <motion.h2
-                    className="font-impact text-[2rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[4rem] text-[#202020] text-center uppercase tracking-tight mb-20 max-w-4xl leading-[1.1]"
+                    className="font-impact text-[2rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[4rem] text-[#202020] text-center uppercase tracking-tight mb-5 sm:mb-10 md:mb-[4rem] max-w-4xl leading-[1.1]"
                     initial="hidden"
                     animate={isInView ? "visible" : "hidden"}
                     variants={titleVariants}
@@ -140,7 +140,7 @@ export default function FamiliarSection() {
 
                     {/* The Girl Illustration */}
                     <motion.div
-                        className="relative z-10 w-64 sm:w-72 md:w-80 lg:w-96 mt-12 md:mt-20"
+                        className="relative z-10 w-[16rem] sm:w-[18rem] md:w-[20rem] lg:w-[32rem]"
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={isInView ? { opacity: 1, scale: 1 } : {}}
                         transition={{ duration: 0.6, delay: 0.2 }}

@@ -66,7 +66,7 @@ export default function CostoRealSection() {
             className="relative bg-[#48A57A] w-full"
             style={{ height: `${cardsData.length * 90}vh` }} // Altura para controlar la velocidad del scroll
         >
-            <div className="sticky top-0 h-screen flex items-center overflow-hidden">
+            <div className="sticky top-0 h-screen min-h-[55rem] py-[4rem] flex items-center overflow-hidden">
                 <div className="container-custom relative z-10 w-full ">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-18 sm:gap-28 md:gap-28 lg:gap-24 items-center xl:mt-10">
 
@@ -131,7 +131,7 @@ export default function CostoRealSection() {
                                                     <motion.img
                                                         src={card.image}
                                                         alt=""
-                                                        className="w-fit max-h-[10rem] lg:max-h-[16rem] drop-shadow-xl"
+                                                        className="w-fit min-w-[8rem] lg:min-w-[14rem] max-h-[10rem] lg:max-h-[16rem] drop-shadow-xl"
                                                         animate={{
                                                             y: [0, -10, 0],
                                                             rotate: [0, 1, 0, -1, 0]

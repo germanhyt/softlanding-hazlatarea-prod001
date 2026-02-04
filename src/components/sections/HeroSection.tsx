@@ -80,7 +80,9 @@ export default function HeroSection() {
                     {/* CTA Button */}
                     <motion.div variants={fadeInUp}>
                         <motion.a
-                            href="#contacto"
+                            // href="#contacto"
+                            target="_blank"
+                            href="https://api.whatsapp.com/send?phone=+51999459707&text=Hola👋,%20me%20puede%20brindar%20más%20información..."
                             className="inline-flex items-center gap-2 px-10 py-4 rounded-full text-lg font-bold uppercase
                                        bg-gradient-to-r from-[#9d72e7] to-[#f5a623] text-white
                                        shadow-lg shadow-black/20

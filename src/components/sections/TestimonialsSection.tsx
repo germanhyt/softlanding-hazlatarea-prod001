@@ -96,21 +96,21 @@ export default function TestimonialsSection() {
                     </button>
 
                     <Swiper
-                        modules={[Navigation]}
+                        modules={[Navigation, Autoplay]}
                         spaceBetween={20}
                         slidesPerView={1}
-                        loop={false}
+                        loop={true}
                         navigation={{
                             prevEl: '.testimonials-prev',
                             nextEl: '.testimonials-next',
                         }}
-                        // autoplay={{
-                        //     delay: 5000,
-                        //     disableOnInteraction: false,
-                        // }}
+                        autoplay={{
+                            delay: 3500,
+                            disableOnInteraction: false,
+                        }}
                         breakpoints={{
-                            640: { slidesPerView: 2, spaceBetween: 24 },
-                            1024: { slidesPerView: 3, spaceBetween: 30 }
+                            640: { slidesPerView: 2, spaceBetween: 20 },
+                            1024: { slidesPerView: 3, spaceBetween: 20 }
                         }}
                         className="testimonials-swiper !overflow-visible"
                     >
