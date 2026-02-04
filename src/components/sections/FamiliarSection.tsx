@@ -19,7 +19,7 @@ export default function FamiliarSection() {
         {
             text: "Tienes muchas ideas y no sabes cuál priorizar",
             position: "top-[25%] left-[8%]",
-            mobilePosition: "top-[18%] left-[0%]"
+            mobilePosition: "top-[12%] left-[0%]"
         },
         {
             text: "Sabes lo que quieres lograr pero no cómo",
