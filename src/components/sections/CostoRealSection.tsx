@@ -66,7 +66,7 @@ export default function CostoRealSection() {
             className="relative bg-[#48A57A] w-full"
             style={{ height: `${cardsData.length * 100}vh` }}
         >
-            <div className="sticky top-0 h-[100dvh] lg:min-h-[55rem] py-10 lg:py-20 flex items-center overflow-hidden">
+            <div className="sticky top-0 h-[100dvh]  py-10 lg:py-20 flex items-center overflow-hidden">
                 <div className="container-custom relative z-10 w-full">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-24 items-center">
 
@@ -123,14 +123,14 @@ export default function CostoRealSection() {
                                     className="costo-real-swiper w-full"
                                 >
                                     {cardsData.map((card, index) => (
-                                        <SwiperSlide key={index} className="min-h-[26rem] xs:min-h-[28rem] lg:min-h-[42rem] rounded-[2rem] lg:rounded-[2.5rem] bg-[#FFB84D] shadow-2xl overflow-hidden">
+                                        <SwiperSlide key={index} className="min-h-[24rem] xs:min-h-[24rem] lg:min-h-[40rem] rounded-[2rem] lg:rounded-[2.5rem] bg-[#FFB84D] shadow-2xl overflow-hidden">
                                             <div className="p-6 xs:p-8 lg:p-12 flex flex-col h-full relative">
                                                 {/* Illustration inside the card */}
                                                 <div className="flex justify-center mb-4 lg:mb-8">
                                                     <motion.img
                                                         src={card.image}
                                                         alt=""
-                                                        className="w-auto h-[6rem] xs:h-[8rem] lg:h-[16rem] drop-shadow-xl"
+                                                        className="w-auto h-[5rem] xs:h-[6rem] lg:h-[12rem] drop-shadow-xl"
                                                         animate={{
                                                             y: [0, -8, 0],
                                                         }}
