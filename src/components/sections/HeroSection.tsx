@@ -71,7 +71,7 @@ export default function HeroSection() {
 
                     {/* Subtitle */}
                     <motion.p
-                        className="text-lg md:text-xl text-white/90 max-w-lg mb-8 leading-relaxed font-medium"
+                        className="text-[1.125rem] md:text-[1.25rem] text-white/90 max-w-lg mb-8 leading-[1.25] font-medium"
                         variants={fadeInUp}
                     >
                         Ayudamos a los emprendimientos y negocios a convertir sus ganas de crecer en una ruta clara y accionable

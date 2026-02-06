@@ -1,8 +1,8 @@
-import { useRef } from 'react';
-import { motion, useInView, type Variants } from 'framer-motion';
+import { useRef, useState } from 'react';
+import { motion, useInView, type Variants, AnimatePresence } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper/modules';
-import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
+import { HiChevronLeft, HiChevronRight, HiX } from 'react-icons/hi';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -20,6 +20,7 @@ interface Testimonial {
 export default function TestimonialsSection() {
     const sectionRef = useRef(null);
     const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+    const [selectedTestimonial, setSelectedTestimonial] = useState<Testimonial | null>(null);
 
     const testimonials: Testimonial[] = [
         {
@@ -65,6 +66,11 @@ export default function TestimonialsSection() {
         }
     };
 
+    const truncateText = (text: string, maxLength: number = 180) => {
+        if (text.length <= maxLength) return text;
+        return text.substring(0, maxLength).trim() + "...";
+    };
+
     return (
         <section
             id="casos"
@@ -88,10 +94,10 @@ export default function TestimonialsSection() {
                 {/* Swiper Carousel */}
                 <div className="relative group px-10 md:px-14">
                     {/* Navigation Buttons */}
-                    <button className="testimonials-prev absolute left-0 top-1/2 -translate-y-1/2 w-10 md:w-12 h-10 md:h-12 rounded-full bg-white flex items-center justify-center text-[#48A57A] shadow-lg z-20 transition-all hover:bg-white hover:scale-110 disabled:opacity-30 disabled:cursor-not-allowed">
+                    <button className="testimonials-prev absolute left-0 top-1/2 -translate-y-1/2 w-10 md:w-12 h-10 md:h-12 rounded-full bg-white flex items-center justify-center text-black shadow-lg z-20 transition-all hover:bg-white hover:scale-110 disabled:opacity-30 disabled:cursor-not-allowed">
                         <HiChevronLeft className="text-2xl md:text-3xl" />
                     </button>
-                    <button className="testimonials-next absolute right-0 top-1/2 -translate-y-1/2 w-10 md:w-12 h-10 md:h-12 rounded-full bg-white flex items-center justify-center text-[#48A57A] shadow-lg z-20 transition-all hover:bg-white hover:scale-110 disabled:opacity-30 disabled:cursor-not-allowed">
+                    <button className="testimonials-next absolute right-0 top-1/2 -translate-y-1/2 w-10 md:w-12 h-10 md:h-12 rounded-full bg-white flex items-center justify-center text-black shadow-lg z-20 transition-all hover:bg-white hover:scale-110 disabled:opacity-30 disabled:cursor-not-allowed">
                         <HiChevronRight className="text-2xl md:text-3xl" />
                     </button>
 
@@ -104,19 +110,21 @@ export default function TestimonialsSection() {
                             prevEl: '.testimonials-prev',
                             nextEl: '.testimonials-next',
                         }}
+                        speed={1500}
+                        grabCursor={true}
                         autoplay={{
-                            delay: 3500,
+                            delay: 5000,
                             disableOnInteraction: false,
                         }}
                         breakpoints={{
                             640: { slidesPerView: 2, spaceBetween: 20 },
-                            1024: { slidesPerView: 3, spaceBetween: 20 }
+                            1024: { slidesPerView: 3, spaceBetween: 20 },
                         }}
                         className="testimonials-swiper !overflow-visible"
                     >
                         {testimonials.map((testimonial) => (
                             <SwiperSlide key={testimonial.id}>
-                                <div className="min-h-[72rem] xs:min-h-[58rem] sm:min-h-[72rem] md:min-h-[60rem] lg:min-h-[64rem] xl:min-h-[44rem] bg-white rounded-[2rem] p-8 md:p-10 h-full flex flex-col shadow-xl">
+                                <div className="bg-white rounded-[2rem] p-8 md:p-10 h-ful min-h-[32rem] xs:min-h-[28rem] lg:min-h-[34rem] xl:min-h-[28rem] flex flex-col shadow-xl">
                                     {/* Company Logo */}
                                     <div className="h-16 mb-8 flex items-center justify-start">
                                         <img
@@ -127,9 +135,19 @@ export default function TestimonialsSection() {
                                     </div>
 
                                     {/* Quote Text */}
-                                    <p className="text-gray-700 text-sm sm:text-base lg:text-sm leading-relaxed flex-1 italic mb-8">
-                                        "{testimonial.content}"
-                                    </p>
+                                    <div className="flex-1 flex flex-col">
+                                        <p className="text-gray-700 text-sm sm:text-base leading-relaxed italic mb-4">
+                                            "{truncateText(testimonial.content)}"
+                                        </p>
+                                        {testimonial.content.length > 180 && (
+                                            <button
+                                                onClick={() => setSelectedTestimonial(testimonial)}
+                                                className="text-[#48A57A] font-bold text-sm hover:underline text-left w-fit mb-6"
+                                            >
+                                                Ver más
+                                            </button>
+                                        )}
+                                    </div>
 
                                     {/* Author Info */}
                                     <div className="mt-auto border-t border-gray-100 pt-6">
@@ -146,6 +164,54 @@ export default function TestimonialsSection() {
                     </Swiper>
                 </div>
             </div>
+
+            {/* Modal Detail */}
+            <AnimatePresence>
+                {selectedTestimonial && (
+                    <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
+                        {/* Backdrop */}
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            onClick={() => setSelectedTestimonial(null)}
+                            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+                        />
+
+                        {/* Modal Content */}
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                            className="relative w-full max-w-2xl bg-white rounded-[2.5rem] p-8 md:p-12 shadow-2xl max-h-[90vh] overflow-y-auto"
+                        >
+                            <button
+                                onClick={() => setSelectedTestimonial(null)}
+                                className="absolute top-6 right-6 p-2 rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 transition-colors"
+                            >
+                                <HiX className="text-2xl" />
+                            </button>
+
+                            {/* Header: Name and Role */}
+                            <div className="mb-8 border-b border-gray-100 pb-6 pr-10">
+                                <h3 className="font-impact text-3xl md:text-4xl text-black uppercase leading-tight">
+                                    {selectedTestimonial.name}
+                                </h3>
+                                <p className="text-black font-bold text-lg mt-1">
+                                    {selectedTestimonial.role} de {selectedTestimonial.company}
+                                </p>
+                            </div>
+
+                            {/* Body: Full Story */}
+                            <div className="prose prose-sm md:prose-base max-w-none">
+                                <p className="text-gray-700 leading-relaxed italic text-lg">
+                                    "{selectedTestimonial.content}"
+                                </p>
+                            </div>
+                        </motion.div>
+                    </div>
+                )}
+            </AnimatePresence>
         </section>
     );
 }
