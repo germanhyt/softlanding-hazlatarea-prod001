@@ -5,7 +5,6 @@ import { motion, AnimatePresence, type Variants } from 'framer-motion';
  * Header Component - Navegación principal con menú pill
  */
 export default function Header() {
-    const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const navigation = [
@@ -15,14 +14,6 @@ export default function Header() {
         { name: "Sobre nosotros", href: "#founder" },
         { name: "Casos de éxito", href: "#casos" },
     ];
-
-    useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 50);
-        };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
 
     // Bloquear scroll cuando el menú está abierto
     useEffect(() => {
@@ -56,11 +47,11 @@ export default function Header() {
 
     return (
         <>
-            <header
-                className={`fixed top-0 left-0 right-0 transition-all duration-300 ${isMobileMenuOpen ? 'z-[120]' : 'z-[100]'} ${isScrolled
-                    ? 'py-2 bg-black/60 backdrop-blur-md shadow-lg shadow-black/20'
-                    : 'py-4 md:py-6 bg-transparent'
-                    }`}
+            <motion.header
+                className={`absolute w-full py-6 md:py-8 bg-transparent transition-colors duration-300 ${isMobileMenuOpen ? 'z-[120]' : 'z-[100]'}`}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
             >
                 <nav className="container-custom">
                     <div className="flex items-center justify-between">
@@ -78,19 +69,12 @@ export default function Header() {
 
                         {/* Desktop Navigation - Pill style */}
                         <div className="hidden lg:flex items-center gap-4">
-                            <div className={`flex items-center gap-1 px-2 py-1.5 rounded-full transition-all duration-300 ${isScrolled
-                                ? 'bg-white/10 shadow-lg backdrop-blur-md border border-white/20'
-                                : 'bg-white shadow-xl'
-                                }`}>
+                            <div className="flex items-center gap-1 px-2 py-1.5 rounded-full bg-white shadow-xl">
                                 {navigation.map((item) => (
                                     <a
                                         key={item.name}
                                         href={item.href}
-                                        className={`px-5 py-2 text-sm font-bold uppercase transition-all duration-300 rounded-full
-                                               ${isScrolled
-                                                ? 'text-white hover:bg-white hover:text-black'
-                                                : 'text-black hover:bg-black/80 hover:text-white'
-                                            }`}
+                                        className="px-5 py-2 text-sm font-bold uppercase transition-all duration-300 rounded-full text-black hover:bg-black/80 hover:text-white"
                                     >
                                         {item.name}
                                     </a>
@@ -101,22 +85,22 @@ export default function Header() {
                         {/* Mobile Menu Button */}
                         <button
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                            className="lg:hidden relative p-2 rounded-lg transition-all duration-300"
+                            className="lg:hidden relative p-2 rounded-lg transition-all duration-300 z-[120]"
                             aria-label={isMobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
                         >
                             <div className="w-6 h-5 relative flex items-center justify-center">
                                 <motion.span
-                                    className="w-full h-0.5 bg-white rounded-full absolute"
+                                    className={`w-full h-0.5 rounded-full absolute transition-colors duration-300 ${isMobileMenuOpen ? 'bg-white' : 'bg-white'}`}
                                     animate={isMobileMenuOpen ? { rotate: 45, y: 0 } : { rotate: 0, y: -7 }}
                                     transition={{ duration: 0.2 }}
                                 />
                                 <motion.span
-                                    className="w-full h-0.5 bg-white rounded-full absolute"
+                                    className={`w-full h-0.5 rounded-full absolute transition-colors duration-300 ${isMobileMenuOpen ? 'bg-white' : 'bg-white'}`}
                                     animate={isMobileMenuOpen ? { opacity: 0, x: -10 } : { opacity: 1, x: 0 }}
                                     transition={{ duration: 0.2 }}
                                 />
                                 <motion.span
-                                    className="w-full h-0.5 bg-white rounded-full absolute"
+                                    className={`w-full h-0.5 rounded-full absolute transition-colors duration-300 ${isMobileMenuOpen ? 'bg-white' : 'bg-white'}`}
                                     animate={isMobileMenuOpen ? { rotate: -45, y: 0 } : { rotate: 0, y: 7 }}
                                     transition={{ duration: 0.2 }}
                                 />
@@ -124,7 +108,7 @@ export default function Header() {
                         </button>
                     </div>
                 </nav>
-            </header>
+            </motion.header>
 
             {/* Mobile Menu Overlay - Outside header to avoid transition issues */}
             <AnimatePresence>
