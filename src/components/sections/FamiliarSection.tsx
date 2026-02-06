@@ -3,7 +3,8 @@ import { useRef } from 'react';
 
 interface PainPoint {
     text: string;
-    position: string; // Tailwind positioning classes for desktop
+    position: string; // Tailwind positioning classes for desktop (md+)
+    tabletPosition: string; // Tailwind positioning classes for tablet (sm+)
     mobilePosition: string; // Tailwind positioning classes for mobile
 }
 
@@ -18,28 +19,33 @@ export default function FamiliarSection() {
     const painPoints: PainPoint[] = [
         {
             text: "Tienes muchas ideas y no sabes cuál priorizar",
-            position: "top-[25%] left-[8%]",
-            mobilePosition: "top-[12%] left-[0%]"
+            position: "md:top-[25%] md:left-[8%]",
+            tabletPosition: "sm:top-[20%] sm:left-[5%]",
+            mobilePosition: "top-[8%] left-[-5%]"
         },
         {
             text: "Sabes lo que quieres lograr pero no cómo",
-            position: "top-[18%] right-[6%]",
-            mobilePosition: "top-[15%] right-[0%]"
+            position: "md:top-[18%] md:right-[6%]",
+            tabletPosition: "sm:top-[15%] sm:right-[2%]",
+            mobilePosition: "top-[15%] right-[-10%]"
         },
         {
             text: "Te sientes solo/a en la toma de decisiones",
-            position: "top-[60%] left-[0%]",
-            mobilePosition: "top-[78%] left-[0%]"
+            position: "md:top-[60%] md:left-[0%]",
+            tabletPosition: "sm:top-[70%] sm:left-[0%]",
+            mobilePosition: "top-[82%] left-[-8%]"
         },
         {
             text: "Dejas la planificación para después",
-            position: "top-[50%] right-[0%]",
-            mobilePosition: "top-[50%] right-[0%]"
+            position: "md:top-[50%] md:right-[0%]",
+            tabletPosition: "sm:top-[55%] sm:right-[0%]",
+            mobilePosition: "top-[52%] right-[-12%]"
         },
         {
             text: "Postergas decisiones por falta de claridad",
-            position: "bottom-[5%] right-[10%]",
-            mobilePosition: "bottom-[5%] right-[5%]"
+            position: "md:bottom-[5%] md:right-[10%]",
+            tabletPosition: "sm:bottom-[5%] sm:right-[10%]",
+            mobilePosition: "bottom-[-2%] right-[0%]"
         }
     ];
 
@@ -157,7 +163,7 @@ export default function FamiliarSection() {
                     {painPoints.map((point, index) => (
                         <motion.div
                             key={index}
-                            className={`absolute z-20 ${point.mobilePosition} ${point.position} w-[140px] sm:w-[160px] md:w-[180px] lg:w-[220px] pointer-events-none`}
+                            className={`absolute z-20 ${point.mobilePosition} ${point.tabletPosition} ${point.position} w-[140px] sm:w-[160px] md:w-[180px] lg:w-[220px] pointer-events-none`}
                             variants={bubbleVariants}
                             initial="hidden"
                             animate={isInView ? "visible" : "hidden"}

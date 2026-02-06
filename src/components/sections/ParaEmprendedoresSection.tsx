@@ -80,14 +80,14 @@ export default function ParaEmprendedoresSection() {
                         className="space-y-6 text-white/90"
                         variants={fadeInUp}
                     >
-                        <p className="text-[1.15rem] sm:text-lg md:text-xl leading-relaxed font-medium">
+                        <p className="text-[1rem] sm:text-lg md:text-xl leading-relaxed font-medium">
                             Haz La Tarea es una consultora boutique que ayuda a dueños/as de emprendimientos
                             y pequeñas/medianas empresas a avanzar con claridad y foco. Ordenamos ideas,
                             definimos prioridades y convertimos el día a día en un camino claro para que
                             cada empresa crezca con dirección y sostenibilidad.
                         </p>
 
-                        <p className="text-[1.15rem] sm:text-lg md:text-xl leading-relaxed font-medium">
+                        <p className="text-[1rem] sm:text-lg md:text-xl leading-relaxed font-medium">
                             Trabajamos desde la acción, con método. <span className="font-bold text-white">Combinamos análisis, criterio
                                 y acompañamiento cercano para que cada negocio establezca un norte claro y ejecute
                                 los pasos necesarios para alcanzarlo.</span> Nuestro enfoque práctico y de "hacer las tareas"

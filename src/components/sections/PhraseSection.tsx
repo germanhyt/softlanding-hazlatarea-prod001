@@ -60,7 +60,7 @@ export default function PhraseSection() {
                     {phrases.map((phrase, index) => (
                         <motion.h3
                             key={index}
-                            className="font-impact text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white uppercase leading-tight tracking-tight shadow-sm"
+                            className="font-impact text-[2rem] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white uppercase leading-tight tracking-tight shadow-sm"
                             variants={textVariants}
                         >
                             {phrase}
