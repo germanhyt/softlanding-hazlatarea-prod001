@@ -64,32 +64,31 @@ export default function CostoRealSection() {
             id="costo-real"
             ref={sectionContainerRef}
             className="relative bg-[#48A57A] w-full"
-            style={{ height: `${cardsData.length * 90}vh` }} // Altura para controlar la velocidad del scroll
+            style={{ height: `${cardsData.length * 100}vh` }}
         >
-            <div className="sticky top-0 h-screen min-h-[55rem] py-[4rem] flex items-center overflow-hidden">
-                <div className="container-custom relative z-10 w-full ">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-18 sm:gap-28 md:gap-28 lg:gap-24 items-center xl:mt-10">
+            <div className="sticky top-0 h-[100dvh] lg:min-h-[55rem] py-10 lg:py-20 flex items-center overflow-hidden">
+                <div className="container-custom relative z-10 w-full">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-24 items-center">
 
                         {/* Left Side: Title and Big Arrow */}
-                        <div className="relative h-full flex flex-col justify-start pt-[3rem] sm:pt-[4rem] lg:pt-[4rem] lg:pr-12">
+                        <div className="relative flex flex-col justify-start lg:pr-12">
                             <motion.div
                                 initial={{ opacity: 0, x: -50 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 transition={{ duration: 0.8 }}
-                                className="z-20 absolute sm:relative "
+                                className="z-20 relative"
                             >
-                                <h2 className="font-impact text-[2rem] sm:text-[2rem] md:text-[2.5rem] lg:text-[4rem] xl:text-[4.5rem] 3xl:text-[5rem] text-black leading-[0.95] uppercase max-w-[16rem] sm:max-w-2xl">
+                                <h2 className="font-impact text-[1.75rem] xs:text-[2rem] sm:text-[2.5rem] lg:text-[4rem] xl:text-[4.5rem] text-black leading-[1] uppercase max-w-[18rem] sm:max-w-2xl">
                                     El costo real de avanzar sin una estrategia clara
                                 </h2>
                             </motion.div>
 
-                            {/* Big White Arrow Illustration */}
+                            {/* Big White Arrow Illustration - Hidden on very small screens to save space */}
                             <motion.div
-                                className="relative sm:absolute top-[7rem] sm:top-[9rem] md:top-[12rem] lg:top-[22rem] xl:top-[20rem] 3xl:top-[22rem] left-[-4rem] 
-                                2xl:top-auto lg:bottom-[-2rem] lg:left-[-8rem] z-10 
-                                w-[12rem] sm:w-[16rem] md:w-[18rem] lg:w-[36rem] xl:w-[45rem] 3xl:w-[48rem] opacity-40 lg:opacity-90 pointer-events-none"
-                                initial={{ opacity: 0, y: 100, rotate: -10 }}
-                                whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+                                className="hidden sm:block absolute lg:relative top-[6.5rem] sm:top-[12rem] lg:top-0 lg:mt-12 left-[-2rem] lg:left-[-8rem] z-10 
+                                w-[4rem] sm:w-[18rem] lg:w-[36rem] xl:w-[45rem] opacity-40 lg:opacity-90 pointer-events-none"
+                                initial={{ opacity: 0, y: 50 }}
+                                whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 1, delay: 0.2 }}
                             >
                                 <img
@@ -101,11 +100,11 @@ export default function CostoRealSection() {
                         </div>
 
                         {/* Right Side: Stacked Cards Carousel */}
-                        <div className="relative z-20 w-full flex justify-center lg:justify-end mt-12 mx-auto lg:mt-0 ">
+                        <div className="relative z-20 w-full flex justify-center lg:justify-end mt-4 lg:mt-0">
                             <motion.div
-                                className="w-full max-w-[24rem] sm:max-w-[34rem]"
-                                initial={{ opacity: 0, scale: 0.9, x: 50 }}
-                                whileInView={{ opacity: 1, scale: 1, x: 0 }}
+                                className="w-full max-w-[22rem] xs:max-w-[24rem] sm:max-w-[34rem]"
+                                initial={{ opacity: 0, scale: 0.9, y: 50 }}
+                                whileInView={{ opacity: 1, scale: 1, y: 0 }}
                                 transition={{ duration: 0.8, delay: 0.4 }}
                             >
                                 <Swiper
@@ -124,17 +123,16 @@ export default function CostoRealSection() {
                                     className="costo-real-swiper w-full"
                                 >
                                     {cardsData.map((card, index) => (
-                                        <SwiperSlide key={index} className="min-h-[34rem] xs:min-h-[32rem] sm:min-h-[28rem] lg:min-h-[42rem] rounded-[2.5rem] bg-[#FFB84D] shadow-2xl overflow-hidden">
-                                            <div className="p-8 md:p-12 flex flex-col h-full relative">
+                                        <SwiperSlide key={index} className="min-h-[26rem] xs:min-h-[28rem] lg:min-h-[42rem] rounded-[2rem] lg:rounded-[2.5rem] bg-[#FFB84D] shadow-2xl overflow-hidden">
+                                            <div className="p-6 xs:p-8 lg:p-12 flex flex-col h-full relative">
                                                 {/* Illustration inside the card */}
-                                                <div className="flex justify-center mb-8">
+                                                <div className="flex justify-center mb-4 lg:mb-8">
                                                     <motion.img
                                                         src={card.image}
                                                         alt=""
-                                                        className="w-fit min-w-[8rem] lg:min-w-[14rem] max-h-[10rem] lg:max-h-[16rem] drop-shadow-xl"
+                                                        className="w-auto h-[6rem] xs:h-[8rem] lg:h-[16rem] drop-shadow-xl"
                                                         animate={{
-                                                            y: [0, -10, 0],
-                                                            rotate: [0, 1, 0, -1, 0]
+                                                            y: [0, -8, 0],
                                                         }}
                                                         transition={{
                                                             duration: 2,
@@ -145,26 +143,26 @@ export default function CostoRealSection() {
                                                 </div>
 
                                                 {/* Content */}
-                                                <div className="min-h-[5.5rem] sm:min-h-[6rem] flex-1 space-y-4">
-                                                    <div className=" text-black text-sm md:text-base lg:text-lg leading-relaxed whitespace-pre-line font-medium opacity-90">
+                                                <div className="flex-1">
+                                                    <div className="text-black text-xs xs:text-sm lg:text-lg leading-relaxed whitespace-pre-line font-medium opacity-90">
                                                         {card.content}
                                                     </div>
                                                 </div>
 
                                                 {/* Footer / Solution */}
-                                                <div className="flex items-end justify-between mt-8 pt-6 border-t border-black/10 gap-4">
+                                                <div className="flex items-end justify-between mt-4 lg:mt-8 pt-4 lg:pt-6 border-t border-black/10 gap-4">
                                                     <div className="flex-1">
-                                                        <p className="text-black font-bold italic text-sm md:text-base lg:text-lg ">
+                                                        <p className="text-black font-bold italic text-[0.7rem] xs:text-xs lg:text-lg">
                                                             {card.footer}
                                                         </p>
                                                     </div>
 
                                                     {/* PNG Arrow Decoration */}
-                                                    <div className="flex-shrink-0 mb-1">
+                                                    <div className="flex-shrink-0">
                                                         <img
                                                             src="/images/section_costo_real_arrow_1.png"
-                                                            alt="Flechas"
-                                                            className="w-[8rem] md:w-[10rem] lg:w-[14rem] h-auto"
+                                                            alt=""
+                                                            className="w-[5rem] xs:w-[6rem] lg:w-[14rem] h-auto"
                                                         />
                                                     </div>
                                                 </div>
