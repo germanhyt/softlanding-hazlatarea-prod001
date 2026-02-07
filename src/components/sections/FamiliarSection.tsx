@@ -133,7 +133,7 @@ export default function FamiliarSection() {
             <div className="container-custom relative z-10 w-full flex flex-col items-center">
                 {/* Title */}
                 <motion.h2
-                    className="font-impact text-[2rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[4rem] text-[#202020] text-center uppercase tracking-tight mb-5 sm:mb-10 md:mb-[4rem] max-w-4xl leading-[1.1]"
+                    className="font-impact text-[2rem] sm:text-[2.5rem] md:text-[3rem] xl:text-[3.6rem] 2xl:text-[4rem] text-[#202020] text-center uppercase tracking-tight mt-5 sm:mt-10 mb-5 sm:mb-10 md:mb-[4rem] max-w-4xl leading-[1.1]"
                     initial="hidden"
                     animate={isInView ? "visible" : "hidden"}
                     variants={titleVariants}

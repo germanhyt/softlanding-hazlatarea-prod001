@@ -62,7 +62,7 @@ export default function MetodologiaSection() {
         <section
             id="metodologia"
             ref={sectionRef}
-            className="relative py-20 md:py-32 overflow-hidden bg-transparent"
+            className="relative py-20 bg-transparent"
         >
             {/* Background Concentric Circles */}
             {/* <div className="absolute inset-0 z-0 opacity-40 md:opacity-60 pointer-events-none">
@@ -76,12 +76,12 @@ export default function MetodologiaSection() {
             <div className="container-custom relative z-10">
                 {/* Section Header */}
                 <motion.div
-                    className="text-center mb-16 md:mb-24"
+                    className="text-center mb-16"
                     initial="hidden"
                     animate={isInView ? "visible" : "hidden"}
                     variants={titleVariants}
                 >
-                    <h2 className="font-impact text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-black leading-[1.1] uppercase tracking-tight">
+                    <h2 className="font-impact text-[2.5rem] sm:text-[3rem] md:text-[3.5rem] lg:text-[4rem] xl:text-[4.2rem] 2xl:text-[4.5rem] text-black leading-[1.1] uppercase tracking-tight">
                         La intención existe, <br />
                         <span className="text-[#202020]">la metodología la vuelve realidad</span>
                     </h2>
@@ -129,7 +129,7 @@ export default function MetodologiaSection() {
                         {[...slides, ...slides, ...slides].map((slide, index) => (
                             <SwiperSlide
                                 key={`metod-slide-${slide.id}-${index}`}
-                                className="!w-[280px] sm:!w-[350px] md:!w-[420px] lg:!w-[500px]"
+                                className="!w-[280px] sm:!w-[350px] md:!w-[380px] xl:!w-[340px] 2xl:!w-[500px]"
                             >
                                 {({ isActive }) => (
                                     <motion.div
@@ -158,7 +158,7 @@ export default function MetodologiaSection() {
                                         {/* Bottom Overlay and Content */}
                                         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
 
-                                        <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 text-center text-white">
+                                        <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 2xl:p-12 text-center text-white">
                                             <h3 className="font-impact text-2xl md:text-3xl lg:text-4xl mb-3 tracking-wide uppercase">
                                                 {slide.title}
                                             </h3>
@@ -172,10 +172,10 @@ export default function MetodologiaSection() {
                         ))}
                     </Swiper>
                     {/* Desktop Navigation Buttons - Absolutely positioned at sides */}
-                    <button className="metodologia-prev absolute -left-4 lg:-left-2 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full border border-black/50 bg-white items-center justify-center text-black hover:bg-black hover:text-white transition-all duration-300 z-30 disabled:opacity-20 disabled:cursor-not-allowed hidden md:flex shadow-xl">
+                    <button className="metodologia-prev absolute -left-4 lg:-left-2 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full 0 bg-white items-center justify-center text-black hover:bg-black hover:text-white transition-all duration-300 z-30 disabled:opacity-20 disabled:cursor-not-allowed hidden md:flex shadow-xl">
                         <HiChevronLeft className="text-3xl" />
                     </button>
-                    <button className="metodologia-next absolute -right-4 lg:-right-2 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full border border-black/50 bg-white items-center justify-center text-black hover:bg-black hover:text-white transition-all duration-300 z-30 disabled:opacity-20 disabled:cursor-not-allowed hidden md:flex shadow-xl">
+                    <button className="metodologia-next absolute -right-4 lg:-right-2 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full 0 bg-white items-center justify-center text-black hover:bg-black hover:text-white transition-all duration-300 z-30 disabled:opacity-20 disabled:cursor-not-allowed hidden md:flex shadow-xl">
                         <HiChevronRight className="text-3xl" />
                     </button>
 

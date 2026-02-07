@@ -104,7 +104,7 @@ export default function ServiciosSection() {
                         animate={isInView ? "visible" : "hidden"}
                         variants={titleVariants}
                     >
-                        <h2 className="font-impact text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#202020] uppercase leading-[1.1]">
+                        <h2 className="font-impact text-[2.5rem] sm:text-[3rem] md:text-[3.5rem] lg:text-[4rem] xl:text-[4.2rem] 2xl:text-[4.5rem] text-[#202020] uppercase leading-[1.1]">
                             ¿Qué hacemos y <br />
                             <span className="text-black">cómo te ayudamos?</span>
                         </h2>
@@ -116,12 +116,19 @@ export default function ServiciosSection() {
                     <div className="pl-4 sm:pl-6 md:pl-8 lg:pl-[max(2rem,calc((100vw-1280px)/2+2rem))]">
                         <Swiper
                             slidesPerView={'auto'}
-                            spaceBetween={30}
                             freeMode={true}
                             grabCursor={true}
                             navigation={{
                                 prevEl: '.servicios-prev',
                                 nextEl: '.servicios-next',
+                            }}
+                            breakpoints={{
+                                0: {
+                                    spaceBetween: 20,
+                                },
+                                1280: {
+                                    spaceBetween: 25,
+                                },
                             }}
                             modules={[Navigation, FreeMode]}
                             className="!overflow-visible"
@@ -129,7 +136,7 @@ export default function ServiciosSection() {
                             {services.map((service) => (
                                 <SwiperSlide
                                     key={service.id}
-                                    className="!w-[290px] sm:!w-[350px] md:!w-[400px] lg:!w-[450px] "
+                                    className="!w-[290px] sm:!w-[350px] md:!w-[380px] xl:!w-[360px] 2xl:!w-[450px] "
                                 >
                                     <motion.div
                                         className="bg-white rounded-[2rem] overflow-hidden 

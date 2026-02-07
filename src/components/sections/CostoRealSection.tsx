@@ -19,22 +19,22 @@ export default function CostoRealSection() {
 
     const cardsData = [
         {
-            image: "/images/section_costo_real_2.png",
+            image: "/images/section_costo_real_2.webp",
             content: "• Tu energía se divide y terminas avanzando a medias.\n • Ventas, campañas, mejoras, alianzas... haces \"un poquito de todo\" y nada termina de despegar.",
             footer: "hasta que ordenamos el caos y definimos qué va primero, qué espera y qué hoy no suma."
         },
         {
-            image: "/images/section_costo_real_3.png",
+            image: "/images/section_costo_real_3.webp",
             content: "• Sientes el potencial, pero no logras ordenar el \"cómo\".\n• Quieres crecer y vender más, pero sin norte terminas repitiendo lo mismo y viendo los mismos resultados.",
             footer: "en Haz La Tarea lo bajamos a una ruta accionable usando tus recursos actuales."
         },
         {
-            image: "/images/section_costo_real_4.png",
+            image: "/images/section_costo_real_4.webp",
             content: "• Resuelves todo el día, apagas incendios y respondes urgencias, y al final sientes que trabajaste muchísimo, pero no avanzaste en lo que realmente mueve el negocio.",
             footer: "Se resuelve con norte, estrategia y estructura."
         },
         {
-            image: "/images/section_costo_real_5.png",
+            image: "/images/section_costo_real_5.webp",
             content: "• Decidir solo/a, a veces, da una mezcla de duda y ansiedad.\n• Quieres alguien que te rete, te ordene ideas y te haga ver lo que no estás viendo.",
             footer: "en Haz La Tarea te acompaño para que confíes en tus decisiones."
         }
