@@ -6,7 +6,7 @@ import ServiciosSection from './ServiciosSection';
 const MetdologiasAndServicios = () => {
     return (
         <>
-            <div className="relative bg-[#F9F7F2]"
+            <div className="relative bg-[#F9F7F2] overflow-hidden"
             >
                 <div className="absolute inset-0 z-0 opacity-40 md:opacity-60 pointer-events-none flex justify-center items-start overflow-hidden">
                     <img

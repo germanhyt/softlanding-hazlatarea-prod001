@@ -143,7 +143,8 @@ export default function MetodologiaSection() {
                                             perspective: "2000px",
                                             isolation: 'isolate',
                                             backfaceVisibility: 'hidden',
-                                            transformStyle: 'preserve-3d'
+                                            // transformStyle: 'preserve-3d'
+                                            WebkitMaskImage: '-webkit-radial-gradient(white, black)',
                                         }}
                                     >
                                         {/* Card Image */}
