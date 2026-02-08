@@ -7,6 +7,7 @@ import { HiChevronLeft, HiChevronRight, HiX } from 'react-icons/hi';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
+import { siteConfig } from '../../config/site.config';
 
 interface Testimonial {
     id: number;
@@ -66,6 +67,16 @@ export default function TestimonialsSection() {
         }
     };
 
+    const itemVariants: Variants = {
+        hidden: { opacity: 0, y: 30 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.6, ease: "easeOut" as const }
+        }
+    };
+
+
     const truncateText = (text: string, maxLength: number = 180) => {
         if (text.length <= maxLength) return text;
         return text.substring(0, maxLength).trim() + "...";
@@ -75,7 +86,7 @@ export default function TestimonialsSection() {
         <section
             id="casos"
             ref={sectionRef}
-            className="py-20 md:py-32 bg-[#48A57A] overflow-hidden"
+            className="py-20 md:pt-32 bg-[#48A57A] overflow-hidden"
         >
             <div className="container-custom">
                 {/* Section Header */}
@@ -163,6 +174,25 @@ export default function TestimonialsSection() {
                         ))}
                     </Swiper>
                 </div>
+
+                {/* CTA Button */}
+                <motion.div
+                    variants={itemVariants}
+                    className='pt-16 w-full flex justify-center'
+                >
+                    <motion.a
+                        href={siteConfig.contact.whatsapp}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-10 py-4 rounded-full text-lg font-medium text-center uppercase
+                                                           bg-gradient-to-r from-[#9d72e7] to-[#f5a623] text-white
+                                                           shadow-xl shadow-black/10 transition-all duration-300 tracking-wide"
+                        whileHover={{ scale: 1.05, y: -2 }}
+                        whileTap={{ scale: 0.98 }}
+                    >
+                        Solicita tu asesoría gratis
+                    </motion.a>
+                </motion.div>
             </div>
 
             {/* Modal Detail */}
