@@ -92,7 +92,7 @@ export default function CostoRealSection() {
                                 transition={{ duration: 1, delay: 0.2 }}
                             >
                                 <img
-                                    src="/images/section_costo_real_1.png"
+                                    src="/images/section_costo_real_1.webp"
                                     alt=""
                                     className="w-full h-auto drop-shadow-3xl"
                                 />
