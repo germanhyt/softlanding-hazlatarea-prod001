@@ -88,13 +88,13 @@ export default function Header() {
                 initial={false}
                 animate={{
                     y: isVisible ? 0 : -100,
-                    backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.98)' : 'rgba(255, 255, 255, 0)',
+                    backgroundColor: isScrolled ? 'rgba(0, 0, 0, 0.85)' : 'rgba(255, 255, 255, 0)',
                     paddingTop: isScrolled ? '10px' : '24px',
                     paddingBottom: isScrolled ? '10px' : '24px',
-                    boxShadow: isScrolled ? '0 10px 30px -10px rgba(0, 0, 0, 0.1)' : '0 0px 0px 0px rgba(0, 0, 0, 0)',
+                    boxShadow: isScrolled ? '0 10px 30px -10px rgba(0, 0, 0, 0.3)' : '0 0px 0px 0px rgba(0, 0, 0, 0)',
                     backdropFilter: isScrolled ? 'blur(16px)' : 'blur(0px)',
                     borderBottomWidth: isScrolled ? '1px' : '0px',
-                    borderBottomColor: 'rgba(0, 0, 0, 0.05)'
+                    borderBottomColor: 'rgba(255, 255, 255, 0.05)'
                 }}
                 transition={{
                     y: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
@@ -116,7 +116,7 @@ export default function Header() {
                                 alt="Haz La Tarea"
                                 animate={{
                                     height: isScrolled ? 42 : 72,
-                                    filter: isScrolled ? 'brightness(0)' : 'brightness(1)'
+                                    filter: 'brightness(1)'
                                 }}
                                 transition={{ duration: 0.4, ease: "easeInOut" }}
                                 className="w-auto transition-transform duration-300 group-hover:scale-105"
@@ -128,7 +128,7 @@ export default function Header() {
                             <motion.div
                                 className="flex items-center gap-1 px-2 py-1.5 rounded-full"
                                 animate={{
-                                    backgroundColor: isScrolled ? 'rgba(0, 0, 0, 0.05)' : 'rgba(255, 255, 255, 1)',
+                                    backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.08)' : 'rgba(255, 255, 255, 1)',
                                     boxShadow: isScrolled ? 'none' : '0 15px 25px -5px rgba(0, 0, 0, 0.1)'
                                 }}
                                 transition={{ duration: 0.4 }}
@@ -137,7 +137,9 @@ export default function Header() {
                                     <a
                                         key={item.name}
                                         href={item.href}
-                                        className={`px-5 py-2 text-sm font-bold uppercase transition-all duration-300 rounded-full hover:bg-black hover:text-white ${isScrolled ? 'text-gray-900' : 'text-black'
+                                        className={`px-5 py-2 text-sm font-bold uppercase transition-all duration-300 rounded-full ${isScrolled
+                                                ? 'text-white hover:bg-white hover:text-black'
+                                                : 'text-black hover:bg-black hover:text-white'
                                             }`}
                                     >
                                         {item.name}
@@ -158,7 +160,7 @@ export default function Header() {
                                     animate={{
                                         rotate: isMobileMenuOpen ? 45 : 0,
                                         y: isMobileMenuOpen ? 0 : -7,
-                                        backgroundColor: isMobileMenuOpen || isScrolled ? '#000' : '#fff'
+                                        backgroundColor: '#fff'
                                     }}
                                     transition={{ duration: 0.2 }}
                                 />
@@ -167,7 +169,7 @@ export default function Header() {
                                     animate={{
                                         opacity: isMobileMenuOpen ? 0 : 1,
                                         x: isMobileMenuOpen ? -10 : 0,
-                                        backgroundColor: isMobileMenuOpen || isScrolled ? '#000' : '#fff'
+                                        backgroundColor: '#fff'
                                     }}
                                     transition={{ duration: 0.2 }}
                                 />
@@ -176,7 +178,7 @@ export default function Header() {
                                     animate={{
                                         rotate: isMobileMenuOpen ? -45 : 0,
                                         y: isMobileMenuOpen ? 0 : 7,
-                                        backgroundColor: isMobileMenuOpen || isScrolled ? '#000' : '#fff'
+                                        backgroundColor: '#fff'
                                     }}
                                     transition={{ duration: 0.2 }}
                                 />
