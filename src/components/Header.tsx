@@ -6,6 +6,9 @@ import { motion, AnimatePresence, type Variants } from 'framer-motion';
  */
 export default function Header() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isVisible, setIsVisible] = useState(true);
+    const [isScrolled, setIsScrolled] = useState(false);
+    const [lastScrollY, setLastScrollY] = useState(0);
 
     const navigation = [
         { name: "El problema", href: "#familiar" },
@@ -14,6 +17,40 @@ export default function Header() {
         { name: "Sobre nosotros", href: "#founder" },
         { name: "Casos de éxito", href: "#casos" },
     ];
+
+    // Lógica de scroll
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+
+            // Determinar si hemos scrolleado para el estilo compacto
+            if (currentScrollY > 20) {
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
+
+            // Lógica de visibilidad (Show on scroll-up, Hide on scroll-down)
+            if (currentScrollY <= 0) {
+                // Estamos arriba del todo
+                setIsVisible(true);
+            } else if (currentScrollY > lastScrollY) {
+                // Scrolleando hacia abajo
+                // Solo ocultar si ya bajamos un poco (evitar flickering al inicio)
+                if (currentScrollY > 50) {
+                    setIsVisible(false);
+                }
+            } else {
+                // Scrolleando hacia arriba
+                setIsVisible(true);
+            }
+
+            setLastScrollY(currentScrollY);
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [lastScrollY]);
 
     // Bloquear scroll cuando el menú está abierto
     useEffect(() => {
@@ -44,14 +81,28 @@ export default function Header() {
         open: { opacity: 1, y: 0 }
     };
 
-
     return (
         <>
             <motion.header
-                className={`absolute w-full py-6 md:py-8 bg-transparent transition-colors duration-300 ${isMobileMenuOpen ? 'z-[120]' : 'z-[100]'}`}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+                className={`fixed top-0 left-0 w-full z-[100] ${isMobileMenuOpen ? 'z-[120]' : 'z-[100]'}`}
+                initial={false}
+                animate={{
+                    y: isVisible ? 0 : -100,
+                    backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.98)' : 'rgba(255, 255, 255, 0)',
+                    paddingTop: isScrolled ? '10px' : '24px',
+                    paddingBottom: isScrolled ? '10px' : '24px',
+                    boxShadow: isScrolled ? '0 10px 30px -10px rgba(0, 0, 0, 0.1)' : '0 0px 0px 0px rgba(0, 0, 0, 0)',
+                    backdropFilter: isScrolled ? 'blur(16px)' : 'blur(0px)',
+                    borderBottomWidth: isScrolled ? '1px' : '0px',
+                    borderBottomColor: 'rgba(0, 0, 0, 0.05)'
+                }}
+                transition={{
+                    y: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
+                    paddingTop: { duration: 0.4, ease: "easeInOut" },
+                    paddingBottom: { duration: 0.4, ease: "easeInOut" },
+                    backgroundColor: { duration: 0.4 },
+                    default: { duration: 0.4 }
+                }}
             >
                 <nav className="container-custom">
                     <div className="flex items-center justify-between">
@@ -60,26 +111,39 @@ export default function Header() {
                             href="/"
                             className="flex items-center gap-3 group relative pointer-events-auto"
                         >
-                            <img
+                            <motion.img
                                 src="/images/logo.png"
                                 alt="Haz La Tarea"
-                                className="h-14 md:h-18 lg:h-20 w-auto transition-transform duration-300 group-hover:scale-105"
+                                animate={{
+                                    height: isScrolled ? 42 : 72,
+                                    filter: isScrolled ? 'brightness(0)' : 'brightness(1)'
+                                }}
+                                transition={{ duration: 0.4, ease: "easeInOut" }}
+                                className="w-auto transition-transform duration-300 group-hover:scale-105"
                             />
                         </a>
 
                         {/* Desktop Navigation - Pill style */}
                         <div className="hidden lg:flex items-center gap-4">
-                            <div className="flex items-center gap-1 px-2 py-1.5 rounded-full bg-white shadow-xl">
+                            <motion.div
+                                className="flex items-center gap-1 px-2 py-1.5 rounded-full"
+                                animate={{
+                                    backgroundColor: isScrolled ? 'rgba(0, 0, 0, 0.05)' : 'rgba(255, 255, 255, 1)',
+                                    boxShadow: isScrolled ? 'none' : '0 15px 25px -5px rgba(0, 0, 0, 0.1)'
+                                }}
+                                transition={{ duration: 0.4 }}
+                            >
                                 {navigation.map((item) => (
                                     <a
                                         key={item.name}
                                         href={item.href}
-                                        className="px-5 py-2 text-sm font-bold uppercase transition-all duration-300 rounded-full text-black hover:bg-black/80 hover:text-white"
+                                        className={`px-5 py-2 text-sm font-bold uppercase transition-all duration-300 rounded-full hover:bg-black hover:text-white ${isScrolled ? 'text-gray-900' : 'text-black'
+                                            }`}
                                     >
                                         {item.name}
                                     </a>
                                 ))}
-                            </div>
+                            </motion.div>
                         </div>
 
                         {/* Mobile Menu Button */}
@@ -90,18 +154,30 @@ export default function Header() {
                         >
                             <div className="w-6 h-5 relative flex items-center justify-center">
                                 <motion.span
-                                    className={`w-full h-0.5 rounded-full absolute transition-colors duration-300 ${isMobileMenuOpen ? 'bg-white' : 'bg-white'}`}
-                                    animate={isMobileMenuOpen ? { rotate: 45, y: 0 } : { rotate: 0, y: -7 }}
+                                    className="w-full h-0.5 rounded-full absolute"
+                                    animate={{
+                                        rotate: isMobileMenuOpen ? 45 : 0,
+                                        y: isMobileMenuOpen ? 0 : -7,
+                                        backgroundColor: isMobileMenuOpen || isScrolled ? '#000' : '#fff'
+                                    }}
                                     transition={{ duration: 0.2 }}
                                 />
                                 <motion.span
-                                    className={`w-full h-0.5 rounded-full absolute transition-colors duration-300 ${isMobileMenuOpen ? 'bg-white' : 'bg-white'}`}
-                                    animate={isMobileMenuOpen ? { opacity: 0, x: -10 } : { opacity: 1, x: 0 }}
+                                    className="w-full h-0.5 rounded-full absolute"
+                                    animate={{
+                                        opacity: isMobileMenuOpen ? 0 : 1,
+                                        x: isMobileMenuOpen ? -10 : 0,
+                                        backgroundColor: isMobileMenuOpen || isScrolled ? '#000' : '#fff'
+                                    }}
                                     transition={{ duration: 0.2 }}
                                 />
                                 <motion.span
-                                    className={`w-full h-0.5 rounded-full absolute transition-colors duration-300 ${isMobileMenuOpen ? 'bg-white' : 'bg-white'}`}
-                                    animate={isMobileMenuOpen ? { rotate: -45, y: 0 } : { rotate: 0, y: 7 }}
+                                    className="w-full h-0.5 rounded-full absolute"
+                                    animate={{
+                                        rotate: isMobileMenuOpen ? -45 : 0,
+                                        y: isMobileMenuOpen ? 0 : 7,
+                                        backgroundColor: isMobileMenuOpen || isScrolled ? '#000' : '#fff'
+                                    }}
                                     transition={{ duration: 0.2 }}
                                 />
                             </div>
@@ -148,7 +224,6 @@ export default function Header() {
                                 variants={itemVariants}
                             >
                                 <a
-                                    // href="#contacto"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     aria-label="Contáctanos"

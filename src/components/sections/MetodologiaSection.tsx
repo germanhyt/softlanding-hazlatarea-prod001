@@ -62,7 +62,7 @@ export default function MetodologiaSection() {
         <section
             id="metodologia"
             ref={sectionRef}
-            className="relative py-20 bg-transparent"
+            className="relative pt-24 bg-transparent"
         >
             {/* Background Concentric Circles */}
             {/* <div className="absolute inset-0 z-0 opacity-40 md:opacity-60 pointer-events-none">

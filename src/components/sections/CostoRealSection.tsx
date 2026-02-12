@@ -66,7 +66,7 @@ export default function CostoRealSection() {
             className="relative bg-[#48A57A] w-full"
             style={{ height: `${cardsData.length * 100}vh` }}
         >
-            <div className="sticky top-0 h-[100dvh]  py-10 lg:py-20 flex items-center overflow-hidden">
+            <div className="sticky top-0 h-[calc(100dvh+5rem)]  py-10 lg:py-20 flex items-center overflow-hidden">
                 <div className="container-custom relative z-10 w-full">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-24 items-center">
 
