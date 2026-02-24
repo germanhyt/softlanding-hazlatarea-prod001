@@ -107,19 +107,35 @@ export default function FounderSection() {
                             </p>
                         </motion.div>
 
-                        {/* CTA Button */}
-                        <motion.div variants={itemVariants}>
+                        {/* CTA Buttons */}
+                        <motion.div
+                            variants={itemVariants}
+                            className="flex flex-col sm:flex-row items-center gap-4 md:gap-6"
+                        >
                             <motion.a
                                 href={siteConfig.contact.whatsapp}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 px-10 py-4 rounded-full text-lg font-medium text-center uppercase
+                                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 md:px-10 py-4 rounded-full text-lg font-medium text-center uppercase
                                            bg-gradient-to-r from-[#9d72e7] to-[#f5a623] text-white
                                            shadow-xl shadow-black/10 transition-all duration-300 tracking-wide"
                                 whileHover={{ scale: 1.05, y: -2 }}
                                 whileTap={{ scale: 0.98 }}
                             >
                                 Solicita tu asesoría gratis
+                            </motion.a>
+
+                            <motion.a
+                                href="https://naddiaschiaffino.substack.com/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 md:px-10 py-4 rounded-full text-lg font-medium text-center uppercase
+                                           border-2 border-black text-black bg-transparent
+                                           hover:bg-black hover:text-[#F9F7F2] transition-colors duration-300 tracking-wide"
+                                whileHover={{ scale: 1.05, y: -2 }}
+                                whileTap={{ scale: 0.98 }}
+                            >
+                                Explora mi blog
                             </motion.a>
                         </motion.div>
                     </motion.div>
